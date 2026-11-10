@@ -1,0 +1,114 @@
+table Vendedor
+	lineageTag: 3a87b7cb-e3c5-49a3-b4a9-efc74c30cf89
+
+	column ID_Vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 96230ce0-a1a4-40a9-8e98-1fee8addac9e
+		summarizeBy: none
+		sourceColumn: ID_Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendedor
+		dataType: string
+		lineageTag: 9f46ab8b-7105-484d-ba71-4f2095544b0f
+		summarizeBy: none
+		sourceColumn: Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: 5c509597-a28c-4042-93f3-cfa47caf9e5a
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: 19beb833-9b78-4ba1-af61-76fbeac0f9d7
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clasificacion
+		dataType: string
+		lineageTag: 8fb8e42b-5291-423e-9912-ad5787c5ec19
+		summarizeBy: none
+		sourceColumn: Clasificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipo
+		dataType: string
+		lineageTag: d2f3992a-d32d-4739-9b30-f2d2688d0839
+		summarizeBy: none
+		sourceColumn: Equipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zona_Comercial
+		dataType: string
+		lineageTag: 782c6e9c-22cd-4067-9925-9a8dedba59c4
+		summarizeBy: none
+		sourceColumn: Zona_Comercial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sucursal_Base
+		dataType: string
+		lineageTag: 8b1e0e26-5aa2-4d02-9947-b02d3b98fa88
+		summarizeBy: none
+		sourceColumn: Sucursal_Base
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Manager
+		dataType: int64
+		formatString: 0
+		lineageTag: c604b7d8-3fe5-415e-b97c-3b0114fd9803
+		summarizeBy: sum
+		sourceColumn: ID_Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: b176fdae-7bf0-4f45-a4fd-d0c6b4128957
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Ingreso
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1e2c7f1c-358e-4c1d-b387-24795c6f12e9
+		summarizeBy: none
+		sourceColumn: Fecha_Ingreso
+
+		variation Variation
+			isDefault
+			relationship: ae61bfd2-d39f-408a-9570-ab5483d36b9d
+			defaultHierarchy: LocalDateTable_a8122332-a2cd-41e1-978f-51a38cba429b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Vendedor = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1MTAmESA_xJnZWU2XZEaGUkVOKvbqEsFjC4H5YZ3HJII/edit?gid=822748552#gid=822748552"),
+				  #"Navigation 1" = Source{[name = "dimVendedor", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Vendedor", Int64.Type}, {"Vendedor", type text}, {"Genero", type text}, {"Cargo", type text}, {"Clasificacion", type text}, {"Equipo", type text}, {"Zona_Comercial", type text}, {"Sucursal_Base", type text}, {"ID_Manager", Int64.Type}, {"Manager", type text}, {"Fecha_Ingreso", type date}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

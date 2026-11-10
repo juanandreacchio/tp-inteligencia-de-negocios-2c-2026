@@ -1,0 +1,73 @@
+table Medidas
+	lineageTag: edc85ad4-a37a-4d06-92af-ac7406ec9993
+
+	measure 'Venta Neta' = CALCULATE(SUM(factVentas[Importe_Neto]), EstadoPedido[Es_Venta_Efectiva] = "Sí")
+		formatString: 0
+		displayFolder: Totales
+		lineageTag: 7d509bee-37e6-4651-8c1b-490325afaaf9
+
+	measure 'Margen Bruto %' = DIVIDE(SUM(factVentas[Margen_Bruto]), [Venta Neta], 1)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: %
+		lineageTag: ef884acd-6353-4a4c-a76e-29f638062cd8
+
+	measure Unidades = SUM(factVentas[Cantidad])
+		formatString: 0
+		displayFolder: Totales
+		lineageTag: 9f7ec5de-4b5f-4e4e-ac75-f06e72bd42b5
+
+	measure 'Ticket Promedio' = DIVIDE([Venta Neta], DISTINCTCOUNT(factVentas[ID_Venta]),1)
+		displayFolder: Calculadas
+		lineageTag: 94fdb449-87fc-40ed-87e3-5a4854eeda01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Clientes Activos' = DISTINCTCOUNT(factVentas[ID_Cliente])
+		formatString: 0
+		displayFolder: Totales
+		lineageTag: d005d67e-5aea-4042-8028-e82ac65b2299
+
+	measure Objetivo = SUM(Objetivo[Objetivo])
+		formatString: 0
+		displayFolder: Totales
+		lineageTag: 84626062-0546-4ef9-bead-81db366ac4ec
+
+	measure '% Cumplimiento' = DIVIDE([Venta Neta], [Objetivo], 1)
+		displayFolder: %
+		lineageTag: 91df01c2-3f4a-4f81-845a-a34234b5be11
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Venta Neta LY' =
+			
+			CALCULATE ( [Venta Neta], SAMEPERIODLASTYEAR ( Tiempo[Fecha] ) )
+		formatString: 0
+		displayFolder: Calculadas
+		lineageTag: 92e73737-25e1-4add-a260-d2b83bdbf7fd
+
+	measure 'Var. vs Ejercicio Anterior' =
+			
+			DIVIDE ( [Venta Neta] - [Venta Neta LY], [Venta Neta LY] )
+		displayFolder: Calculadas
+		lineageTag: 007b22c4-61a8-49a7-afa7-9d507845d0eb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 6929b414-2848-43ed-b2c1-232e6a7826d0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = b180881a918f47de86463ac398977ea4
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

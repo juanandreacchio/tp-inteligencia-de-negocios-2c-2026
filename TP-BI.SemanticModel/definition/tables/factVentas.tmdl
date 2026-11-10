@@ -1,0 +1,258 @@
+table factVentas
+	lineageTag: d4f5582f-d1bb-48fc-9b5b-0327b8706027
+
+	column ID_Venta
+		dataType: int64
+		formatString: 0
+		lineageTag: 817c0735-da33-4aab-b6af-fb664aaa745f
+		summarizeBy: sum
+		sourceColumn: ID_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Comprobante
+		dataType: string
+		lineageTag: 1ec953ad-0511-4e6f-98b3-46bd7bcbe271
+		summarizeBy: none
+		sourceColumn: Tipo_Comprobante
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nro_Comprobante
+		dataType: string
+		lineageTag: d3917d90-e9ad-48be-8e41-544afb8f57db
+		summarizeBy: none
+		sourceColumn: Nro_Comprobante
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Venta
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a40aa9d7-2aae-4062-857a-8b6a9be7f04c
+		summarizeBy: none
+		sourceColumn: Fecha_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Fecha_Entrega
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 663900f3-f103-4f67-8688-ebad24cbc542
+		summarizeBy: none
+		sourceColumn: Fecha_Entrega
+
+		variation Variation
+			isDefault
+			relationship: bc81aa3e-285b-47b2-94d9-c108a6f15839
+			defaultHierarchy: LocalDateTable_5527431f-d623-40b3-bd1c-d25d3b8b025e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_Cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: da3894ec-6b2f-4619-b985-4f063a3cea0a
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Producto
+		dataType: int64
+		formatString: 0
+		lineageTag: 247d6bca-1792-4ff7-bdf7-a6abe2f6f0c2
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Sucursal
+		dataType: int64
+		formatString: 0
+		lineageTag: 4acdadb1-5ef1-45d1-9d8a-d8f8c01f9f99
+		summarizeBy: none
+		sourceColumn: ID_Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 84a5eed3-1a14-4756-be4b-8c6e668f62ae
+		summarizeBy: none
+		sourceColumn: ID_Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Canal
+		dataType: int64
+		formatString: 0
+		lineageTag: 57de24b3-0ece-458e-8554-89bbdd56129c
+		summarizeBy: none
+		sourceColumn: ID_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Medio_Pago
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cb9f866-42ed-412a-8422-c2762e2ef2ec
+		summarizeBy: none
+		sourceColumn: ID_Medio_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuotas
+		dataType: int64
+		formatString: 0
+		lineageTag: d97af932-1562-4d67-9028-e81dc1229375
+		summarizeBy: sum
+		sourceColumn: Cuotas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Estado_Pedido
+		dataType: int64
+		formatString: 0
+		lineageTag: b4e1dd82-75e7-412d-9f74-6a4826e4c764
+		summarizeBy: none
+		sourceColumn: ID_Estado_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Promocion
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e91ce38-82b5-4484-aa1d-a67ef5bf49c0
+		summarizeBy: none
+		sourceColumn: ID_Promocion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cantidad
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dbd4c53-b2d2-4326-b822-cc892535b781
+		summarizeBy: sum
+		sourceColumn: Cantidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precio_Unitario
+		dataType: int64
+		formatString: 0
+		lineageTag: 3088599f-cbfd-41d2-93c9-2021a913fce1
+		summarizeBy: sum
+		sourceColumn: Precio_Unitario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costo_Unitario
+		dataType: int64
+		formatString: 0
+		lineageTag: 6044ecd0-e7ec-4a57-8382-5e97267229e4
+		summarizeBy: sum
+		sourceColumn: Costo_Unitario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Importe_Bruto
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ae90517-9d0b-466b-97e7-b37d1c4d2869
+		summarizeBy: sum
+		sourceColumn: Importe_Bruto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Porcentaje_Descuento
+		dataType: double
+		lineageTag: 51a8fe7c-1413-4adb-a151-74581ae1c76a
+		summarizeBy: sum
+		sourceColumn: Porcentaje_Descuento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Importe_Descuento
+		dataType: int64
+		formatString: 0
+		lineageTag: bedc1bb5-5a27-4dfb-ab14-5d4b4bfda0b4
+		summarizeBy: sum
+		sourceColumn: Importe_Descuento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Importe_Neto
+		dataType: int64
+		formatString: 0
+		lineageTag: 54c2dca7-07ed-4ec5-a5b4-3420664a3840
+		summarizeBy: sum
+		sourceColumn: Importe_Neto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impuesto_IVA
+		dataType: int64
+		formatString: 0
+		lineageTag: cc71058c-b479-4d44-a4e7-8289a44cdaab
+		summarizeBy: sum
+		sourceColumn: Impuesto_IVA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Importe_Total
+		dataType: int64
+		formatString: 0
+		lineageTag: 4062654f-08e0-4e3b-ade0-ee11b5715863
+		summarizeBy: sum
+		sourceColumn: Importe_Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costo_Total
+		dataType: int64
+		formatString: 0
+		lineageTag: bb6c8868-afc2-48c5-90d2-3f9b550a423f
+		summarizeBy: sum
+		sourceColumn: Costo_Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Margen_Bruto
+		dataType: int64
+		formatString: 0
+		lineageTag: f621535a-efcd-42ab-9dc8-477a0fb4c20b
+		summarizeBy: sum
+		sourceColumn: Margen_Bruto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating_Satisfaccion
+		dataType: int64
+		formatString: 0
+		lineageTag: f5922824-2b85-4814-9f88-717682d26534
+		summarizeBy: sum
+		sourceColumn: Rating_Satisfaccion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition factVentas = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/146PtleK43DwMTo4mQOTzgYl2avRqyp9s6Si4mlHWmcY/edit?gid=115743937#gid=115743937"),
+				  #"Navigation 1" = Source{[name = "factVentas", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Venta", Int64.Type}, {"Tipo_Comprobante", type text}, {"Nro_Comprobante", type text}, {"Fecha_Venta", type date}, {"Fecha_Entrega", type date}, {"ID_Cliente", Int64.Type}, {"ID_Producto", Int64.Type}, {"ID_Sucursal", Int64.Type}, {"ID_Vendedor", Int64.Type}, {"ID_Canal", Int64.Type}, {"ID_Medio_Pago", Int64.Type}, {"Cuotas", Int64.Type}, {"ID_Estado_Pedido", Int64.Type}, {"ID_Promocion", Int64.Type}, {"Cantidad", Int64.Type}, {"Precio_Unitario", Int64.Type}, {"Costo_Unitario", Int64.Type}, {"Importe_Bruto", Int64.Type}, {"Porcentaje_Descuento", type number}, {"Importe_Descuento", Int64.Type}, {"Importe_Neto", Int64.Type}, {"Impuesto_IVA", Int64.Type}, {"Importe_Total", Int64.Type}, {"Costo_Total", Int64.Type}, {"Margen_Bruto", Int64.Type}, {"Rating_Satisfaccion", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

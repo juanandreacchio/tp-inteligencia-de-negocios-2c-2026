@@ -1,0 +1,169 @@
+table Cliente
+	lineageTag: 9c8c0a6b-6905-4525-beee-a57eab90f5bd
+
+	column ID_Cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: 30c1d4f4-412f-47af-92c7-ffab1d8f1afc
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUIT_CUIL
+		dataType: string
+		lineageTag: da21a778-932d-432e-9f97-51d5270e4594
+		summarizeBy: none
+		sourceColumn: CUIT_CUIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cliente
+		dataType: string
+		lineageTag: e04d3f1c-e186-4746-94fa-99c8b8f7f963
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segmento
+		dataType: string
+		lineageTag: 58b61b7d-c03d-428c-9803-d07cac507887
+		summarizeBy: none
+		sourceColumn: Segmento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Condicion_IVA
+		dataType: string
+		lineageTag: 5f42e082-43d8-475f-bb23-ab2675c99f19
+		summarizeBy: none
+		sourceColumn: Condicion_IVA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Programa_Fidelizacion
+		dataType: string
+		lineageTag: 22a2bc9e-7cc0-4488-aa92-a61c9abaa104
+		summarizeBy: none
+		sourceColumn: Programa_Fidelizacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: cebb2ff2-cdb3-447b-b768-33577ba44f74
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Nacimiento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e7ee0a1-96b2-4e92-be5e-38eaff072cb4
+		summarizeBy: none
+		sourceColumn: Fecha_Nacimiento
+
+		variation Variation
+			isDefault
+			relationship: 4f0008c8-10e2-4b17-8f5c-25bd18e5238b
+			defaultHierarchy: LocalDateTable_922c6455-6931-4221-a52f-625a5d6ceb75.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Localidad
+		dataType: string
+		lineageTag: 99fe8bf7-b398-4b20-8127-c7790f2bd596
+		summarizeBy: none
+		sourceColumn: Localidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido_Departamento
+		dataType: string
+		lineageTag: 4815beee-ce4f-4738-9db4-19239b367dc1
+		summarizeBy: none
+		sourceColumn: Partido_Departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia
+		dataType: string
+		lineageTag: 22dee044-6d0c-4419-9fb6-ab26a55c87a6
+		summarizeBy: none
+		sourceColumn: Provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia_Mapa
+		dataType: string
+		lineageTag: 6f9cab8e-b8c9-496f-8571-841c0e810742
+		summarizeBy: none
+		sourceColumn: Provincia_Mapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Provincia_ISO
+		dataType: string
+		lineageTag: 9278608a-8704-4921-a84f-438fbf4ff452
+		summarizeBy: none
+		sourceColumn: Codigo_Provincia_ISO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: e9e2b295-aead-4a47-9c10-ab8f1b8f384c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 549ed039-0aff-4e7c-bc3b-d734f48f826e
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ubicacion_Mapa
+		dataType: string
+		lineageTag: 4347ed94-1b72-43de-8859-0331a2506aec
+		summarizeBy: none
+		sourceColumn: Ubicacion_Mapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Alta
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f69a7b3d-ca72-4adb-b200-cb0160238995
+		summarizeBy: none
+		sourceColumn: Fecha_Alta
+
+		variation Variation
+			isDefault
+			relationship: 9a21b9c4-741b-4061-8d1d-cb81c7d77475
+			defaultHierarchy: LocalDateTable_0fd027f6-7d3a-4ffb-beb1-a7ec3a9c77a4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Cliente = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/15RqzfWPsqsCrtIKP263T8P3aItagVjdrg69Bj0K1WVc/edit?gid=1889612076#gid=1889612076"),
+				  #"Navigation 1" = Source{[name = "dimCliente", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Cliente", Int64.Type}, {"CUIT_CUIL", type text}, {"Cliente", type text}, {"Segmento", type text}, {"Condicion_IVA", type text}, {"Programa_Fidelizacion", type text}, {"Genero", type text}, {"Fecha_Nacimiento", type date}, {"Localidad", type text}, {"Partido_Departamento", type text}, {"Provincia", type text}, {"Provincia_Mapa", type text}, {"Codigo_Provincia_ISO", type text}, {"Region", type text}, {"Pais", type text}, {"Ubicacion_Mapa", type text}, {"Fecha_Alta", type date}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

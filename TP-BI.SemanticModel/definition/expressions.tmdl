@@ -1,0 +1,22 @@
+expression Obj2024 =
+		let
+		    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1Sy8C9EH-zX4ofUrH342BcQqRP07b2mJ8ON_EXdduEFg/edit"),
+		    Nav = Source{[name = "Objetivos_2024", ItemKind = "Table"]}[Data],
+		    Headers = Table.PromoteHeaders(Nav, [PromoteAllScalars = true])
+		in
+		    Headers
+	lineageTag: 3a9e3393-03ca-42db-8bd0-4c13dddbc3a3
+
+	annotation PBI_ResultType = Table
+
+expression Obj2025 =
+		let
+		    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1gppHGspH0dy4Bw8FqziVuevnpTCmZLUlYoMPrrpbStk/edit"),
+		    Nav = Source{[name = "Objetivos_2025", ItemKind = "Table"]}[Data],
+		    Headers = Table.PromoteHeaders(Nav, [PromoteAllScalars = true])
+		in
+		    Headers
+	lineageTag: da7daa08-edf3-4ee4-97b4-9d33d418a0c5
+
+	annotation PBI_ResultType = Table
+

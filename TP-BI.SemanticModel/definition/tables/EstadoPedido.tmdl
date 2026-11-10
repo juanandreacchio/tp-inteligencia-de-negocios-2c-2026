@@ -1,0 +1,41 @@
+table EstadoPedido
+	lineageTag: 04dc47e4-7345-408e-b1aa-348adc5e9080
+
+	column ID_Estado_Pedido
+		dataType: int64
+		formatString: 0
+		lineageTag: a77e3746-1d45-4b29-b19d-b57c1be6f724
+		summarizeBy: none
+		sourceColumn: ID_Estado_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado_Pedido
+		dataType: string
+		lineageTag: 6e93b82d-e482-4e5a-87f2-af2288412b03
+		summarizeBy: none
+		sourceColumn: Estado_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Es_Venta_Efectiva
+		dataType: string
+		lineageTag: 82977fb1-4b33-4b8c-b6a5-1bac1dec3fbe
+		summarizeBy: none
+		sourceColumn: Es_Venta_Efectiva
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EstadoPedido = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1dt0EzbCBtMS_asip5WQK0lJKOGDyKaunuwQMOlTCCho/edit?gid=533519129#gid=533519129"),
+				  #"Navigation 1" = Source{[name = "dimEstadoPedido", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Estado_Pedido", Int64.Type}, {"Estado_Pedido", type text}, {"Es_Venta_Efectiva", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,215 @@
+table Tiempo
+	lineageTag: 3f6eff92-67e6-4e1c-a64a-1997d585d1c1
+
+	column Fecha
+		formatString: General Date
+		lineageTag: 68868412-4be9-4906-b761-f70fbbb8c9f9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fecha]
+
+		variation Variation
+			isDefault
+			relationship: 2f3712f8-efef-4282-a921-7f144deebf05
+			defaultHierarchy: LocalDateTable_a1a7a96e-e843-4afa-9f5b-0e4e609fbf31.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Codigo Fecha'
+		lineageTag: a05869f0-f7ca-427f-8430-f8a838b830e8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Codigo Fecha]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		formatString: 0
+		lineageTag: dda3f86e-0276-49fc-b8a1-5f7eb79360a0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: a798b96a-a371-44ba-97ca-55b6ec1d44c9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Codigo Mes'
+		lineageTag: 847d5f11-0e34-4acc-a19f-bb8d570e4b95
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Codigo Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Anio Mes Corto'
+		lineageTag: 1aa71fa5-25c8-4bb6-a902-e5c22c4fc499
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Anio Mes Corto]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Corto'
+		lineageTag: 2f2bf544-4dc9-491c-b57f-b2026636fa45
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes Corto]
+		sortByColumn: 'Mes Fiscal Nro'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Largo'
+		lineageTag: 9985d224-5b17-4733-b130-c70fbaeb745b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes Largo]
+		sortByColumn: 'Mes Fiscal Nro'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Codigo Dia Semana'
+		formatString: 0
+		lineageTag: 23178195-c24b-4be8-a563-70f1ad4d3a25
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Codigo Dia Semana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia Semana'
+		lineageTag: 7f78bedd-7a79-4fcc-97ca-802ef0a52824
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Dia Semana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia Semana Corto'
+		lineageTag: 7b0fc596-3ebc-4a08-a5cb-f2308a626297
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Dia Semana Corto]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Codigo Trimeste'
+		formatString: 0
+		lineageTag: 2e3b37b7-4498-4875-bfc8-a6d2c923c882
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Codigo Trimeste]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: 67b2cdf3-21fa-4ab2-b499-48a541f9e070
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Anio Trimestre'
+		lineageTag: cde6d8ec-df4c-4e12-98c5-84bbdb69bdf7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Anio Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ejercicio
+		formatString: 0
+		lineageTag: e33fcbdb-7dae-48b9-bea0-7fa7de3f5b48
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ejercicio]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ejercicio Desc'
+		lineageTag: 2c891858-c1e3-469f-b64c-4705f04b1d4c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ejercicio Desc]
+		sortByColumn: Ejercicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Fiscal Nro'
+		isHidden
+		formatString: 0
+		lineageTag: f94e2f2a-4159-4899-ab25-82912bdf29ee
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Mes Fiscal Nro]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Codigo Mes Fiscal'
+		isHidden
+		formatString: 0
+		lineageTag: 77627a98-aa99-41d3-ae35-d6900f432067
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Codigo Mes Fiscal]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tiempo = calculated
+		mode: import
+		source = ```
+				
+				SELECTCOLUMNS (
+				    ADDCOLUMNS (
+				        CALENDAR (
+				            MIN ( factVentas[Fecha_Venta] ),
+				            MAX ( factVentas[Fecha_Venta] )
+				        ),
+				        "Codigo Fecha", FORMAT ( [Date], "YYYYMMDD" ),
+				        "Año", YEAR ( [Date] ),
+				        "Mes", FORMAT ( [Date], "MM" ),
+				        "Codigo Mes", FORMAT ( [Date], "YYYYMM" ),
+				        "Anio Mes Corto", FORMAT ( [Date], "YYYY" ) & " " & UPPER ( LEFT ( FORMAT ( [Date], "mmm" ), 1 ) ) & RIGHT ( FORMAT ( [Date], "mmm" ), LEN ( FORMAT ( [Date], "mmm" ) ) - 1 ),
+				        "Mes Corto", UPPER ( LEFT ( FORMAT ( [Date], "mmm" ), 1 ) ) & RIGHT ( FORMAT ( [Date], "mmm" ), LEN ( FORMAT ( [Date], "mmm" ) ) - 1 ),
+				        "Mes Largo", UPPER ( LEFT ( FORMAT ( [Date], "mmmm" ), 1 ) ) & RIGHT ( FORMAT ( [Date], "mmmm" ), LEN ( FORMAT ( [Date], "mmmm" ) ) - 1 ),
+				        "Codigo Dia Semana", WEEKDAY ( [Date] ),
+				        "Dia Semana", UPPER ( LEFT ( FORMAT ( [Date], "dddd" ), 1 ) ) & RIGHT ( FORMAT ( [Date], "dddd" ), LEN ( FORMAT ( [Date], "dddd" ) ) - 1 ),
+				        "Dia Semana Corto", UPPER ( LEFT ( FORMAT ( [Date], "ddd" ), 1 ) ) & RIGHT ( FORMAT ( [Date], "ddd" ), LEN ( FORMAT ( [Date], "ddd" ) ) - 1 ),
+				        "Codigo Trimeste", YEAR ( [Date] ) * 100 + QUARTER ( [Date] ),
+				        "Trimestre", "Q" & FORMAT ( [Date], "Q" ),
+				        "Anio Trimestre", FORMAT ( [Date], "YYYY" ) & " Q" & FORMAT ( [Date], "Q" ),
+				        -- Ejercicio fiscal (01/07/N al 30/06/N+1)
+				        "Ejercicio", IF ( MONTH ( [Date] ) >= 7, YEAR ( [Date] ), YEAR ( [Date] ) - 1 ),
+				        "Mes Fiscal Nro", MOD ( MONTH ( [Date] ) - 7, 12 ) + 1
+				    ),
+				    "Fecha", [Date],
+				    "Codigo Fecha", [Codigo Fecha],
+				    "Año", [Año],
+				    "Mes", [Mes],
+				    "Codigo Mes", [Codigo Mes],
+				    "Anio Mes Corto", [Anio Mes Corto],
+				    "Mes Corto", [Mes Corto],
+				    "Mes Largo", [Mes Largo],
+				    "Codigo Dia Semana", [Codigo Dia Semana],
+				    "Dia Semana", [Dia Semana],
+				    "Dia Semana Corto", [Dia Semana Corto],
+				    "Codigo Trimeste", [Codigo Trimeste],
+				    "Trimestre", [Trimestre],
+				    "Anio Trimestre", [Anio Trimestre],
+				    "Ejercicio", [Ejercicio],
+				    "Ejercicio Desc", "Ej. " & [Ejercicio] & "/" & RIGHT ( [Ejercicio] + 1, 2 ),
+				    "Mes Fiscal Nro", [Mes Fiscal Nro],
+				    "Codigo Mes Fiscal", [Ejercicio] * 100 + [Mes Fiscal Nro]
+				)
+				
+				```
+
+	annotation PBI_Id = 03c14729b3714b3094e742185dde38b5
+

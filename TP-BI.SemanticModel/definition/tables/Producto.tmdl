@@ -1,0 +1,100 @@
+table Producto
+	lineageTag: 1b5ea9b7-4f04-48e5-8152-2423538eb075
+
+	column ID_Producto
+		dataType: int64
+		formatString: 0
+		lineageTag: d9c9b018-1b11-4bde-b2d8-6e8abfd4d06e
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: aaffa727-70c2-4fde-95c6-383bebdce0e6
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Producto
+		dataType: string
+		lineageTag: 79b04122-89a8-4f1f-bee4-1d809ed750ad
+		summarizeBy: none
+		sourceColumn: Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: a4452b7f-5ea1-4c76-954a-37079bf8f3ff
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategoria
+		dataType: string
+		lineageTag: 23b748cb-8691-4f48-adca-78bbafa027ab
+		summarizeBy: none
+		sourceColumn: Subcategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Linea
+		dataType: string
+		lineageTag: 1c5485ff-cfc3-4afe-8ffb-e5ca1c2c9cc3
+		summarizeBy: none
+		sourceColumn: Linea
+
+		annotation SummarizationSetBy = Automatic
+
+	column Temporada
+		dataType: string
+		lineageTag: af5efcf0-f226-4f78-97e4-af5c8d2eae24
+		summarizeBy: none
+		sourceColumn: Temporada
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precio_Lista_Vigente
+		dataType: int64
+		formatString: 0
+		lineageTag: bf8b94cb-9486-4b23-b876-838be6246c49
+		summarizeBy: none
+		sourceColumn: Precio_Lista_Vigente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costo_Unitario_Vigente
+		dataType: int64
+		formatString: 0
+		lineageTag: f7a05025-97e8-4f95-8c15-46588bdfdac8
+		summarizeBy: none
+		sourceColumn: Costo_Unitario_Vigente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Margen_Unitario_Vigente
+		dataType: int64
+		formatString: 0
+		lineageTag: 0391ba4a-3655-4579-8879-4a9f5d240e3f
+		summarizeBy: none
+		sourceColumn: Margen_Unitario_Vigente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Producto = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1plXagk3tinIFJkR33IhKFYMhHFDfJlW32afnI8KI1cs/edit?gid=26952157#gid=26952157"),
+				  #"Navigation 1" = Source{[name = "dimProducto", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Producto", Int64.Type}, {"SKU", type text}, {"Producto", type text}, {"Categoria", type text}, {"Subcategoria", type text}, {"Linea", type text}, {"Temporada", type text}, {"Precio_Lista_Vigente", Int64.Type}, {"Costo_Unitario_Vigente", Int64.Type}, {"Margen_Unitario_Vigente", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

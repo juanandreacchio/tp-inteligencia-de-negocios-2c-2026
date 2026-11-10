@@ -1,0 +1,38 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-AR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Vendedor","Sucursal","Promocion","Producto","MedioPago","EstadoPedido","Cliente","Canal","factVentas","Obj2024","Obj2025","Objetivo"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Vendedor
+ref table DateTableTemplate_df9c7822-c7f1-4c81-baa4-598812e4dd5c
+ref table LocalDateTable_a8122332-a2cd-41e1-978f-51a38cba429b
+ref table Sucursal
+ref table LocalDateTable_d7c6713c-b959-4303-b306-445628ee98ed
+ref table Promocion
+ref table Producto
+ref table MedioPago
+ref table EstadoPedido
+ref table Cliente
+ref table LocalDateTable_922c6455-6931-4221-a52f-625a5d6ceb75
+ref table LocalDateTable_0fd027f6-7d3a-4ffb-beb1-a7ec3a9c77a4
+ref table Canal
+ref table factVentas
+ref table Tiempo
+ref table LocalDateTable_5527431f-d623-40b3-bd1c-d25d3b8b025e
+ref table Objetivo
+ref table Medidas
+ref table LocalDateTable_a1a7a96e-e843-4afa-9f5b-0e4e609fbf31
+
+ref cultureInfo en-US
+

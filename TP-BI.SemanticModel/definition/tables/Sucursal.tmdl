@@ -1,0 +1,160 @@
+table Sucursal
+	lineageTag: 6481d7fd-fb42-45d3-9fb6-763fa7aec7ba
+
+	column ID_Sucursal
+		dataType: int64
+		formatString: 0
+		lineageTag: fd920a6d-7ff1-4e5e-ae76-9f2bd25a42b4
+		summarizeBy: none
+		sourceColumn: ID_Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sucursal
+		dataType: string
+		lineageTag: a95b2d51-5daa-48d5-946c-5ee4d0775bd6
+		summarizeBy: none
+		sourceColumn: Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Punto_Venta
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c2a36dd-bdbc-46f4-9eec-901ebd49eeeb
+		summarizeBy: sum
+		sourceColumn: Punto_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Localidad
+		dataType: string
+		lineageTag: 880a9c56-27a0-49f0-8f5c-7a16bd25dad6
+		summarizeBy: none
+		sourceColumn: Localidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido_Departamento
+		dataType: string
+		lineageTag: c7dd6d41-fb5f-486a-a14a-f005678167ad
+		summarizeBy: none
+		sourceColumn: Partido_Departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia
+		dataType: string
+		lineageTag: 2bd09f20-1ea5-4f4a-9e03-80f15d3f4a6d
+		summarizeBy: none
+		sourceColumn: Provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia_Mapa
+		dataType: string
+		lineageTag: 61152862-44d2-405a-bf51-e1fa07c49c61
+		summarizeBy: none
+		sourceColumn: Provincia_Mapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Provincia_ISO
+		dataType: string
+		lineageTag: bf132d38-64b8-4dda-b151-7de22b78247e
+		summarizeBy: none
+		sourceColumn: Codigo_Provincia_ISO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Orden_Provincia
+		dataType: int64
+		formatString: 0
+		lineageTag: da9e51b3-c04f-47b3-827d-80c6a58d0866
+		summarizeBy: sum
+		sourceColumn: Orden_Provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: a9990ffa-34f2-406e-b915-59c1ece75c5e
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 3180a498-e4f0-47fe-882d-468112ea9ea9
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ubicacion_Mapa
+		dataType: string
+		lineageTag: d493c8bb-0e41-4743-94cf-caec45e2e8c1
+		summarizeBy: none
+		sourceColumn: Ubicacion_Mapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitud
+		dataType: double
+		lineageTag: cec543b8-ac56-4365-8c2b-be3a002b0f5a
+		summarizeBy: sum
+		sourceColumn: Latitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitud
+		dataType: double
+		lineageTag: 2823608d-635f-4929-9f7a-1560b00fbbc5
+		summarizeBy: sum
+		sourceColumn: Longitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Fecha_Apertura
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 434e8d97-b59d-40b5-bbf7-afcc11065264
+		summarizeBy: none
+		sourceColumn: Fecha_Apertura
+
+		variation Variation
+			isDefault
+			relationship: bd18932d-c346-4c4f-8520-9e3da53655cf
+			defaultHierarchy: LocalDateTable_d7c6713c-b959-4303-b306-445628ee98ed.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Superficie_m2
+		dataType: int64
+		formatString: 0
+		lineageTag: 16da19b7-6019-4ecb-8a48-c04dcab6a0e7
+		summarizeBy: sum
+		sourceColumn: Superficie_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sucursal = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1erF-3C6S5QHoaQUYCH2H5ja9E5YKN_zaNZ5RxFOl4Ws/edit?gid=384340916#gid=384340916"),
+				  #"Navigation 1" = Source{[name = "dimSucursal", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Sucursal", Int64.Type}, {"Sucursal", type text}, {"Punto_Venta", Int64.Type}, {"Localidad", type text}, {"Partido_Departamento", type text}, {"Provincia", type text}, {"Provincia_Mapa", type text}, {"Codigo_Provincia_ISO", type text}, {"Orden_Provincia", Int64.Type}, {"Region", type text}, {"Pais", type text}, {"Ubicacion_Mapa", type text}, {"Latitud", type number}, {"Longitud", type number}, {"Fecha_Apertura", type date}, {"Superficie_m2", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

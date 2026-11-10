@@ -1,0 +1,49 @@
+table Canal
+	lineageTag: d0977607-5013-4d3e-b9a6-146b75238e08
+
+	column ID_Canal
+		dataType: int64
+		formatString: 0
+		lineageTag: d72ecba2-5a4d-4f55-bfa5-c687ca6317e6
+		summarizeBy: none
+		sourceColumn: ID_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal
+		dataType: string
+		lineageTag: 612b000b-455c-44de-a764-7426b617a7c6
+		summarizeBy: none
+		sourceColumn: Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Canal
+		dataType: string
+		lineageTag: d7f1ffe7-6b55-4013-b4e4-32fe6911a0a2
+		summarizeBy: none
+		sourceColumn: Tipo_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Punto_Venta_Digital
+		dataType: string
+		lineageTag: 8db26711-2c0c-4351-a356-c41ab1bdad12
+		summarizeBy: none
+		sourceColumn: Punto_Venta_Digital
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Canal = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1c8Ai2zVmCOu7GSs12WdaV2XBSOmq30F2LuqI_gXPvi8/edit?gid=1049945324#gid=1049945324"),
+				  #"Navigation 1" = Source{[name = "dimCanal", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Canal", Int64.Type}, {"Canal", type text}, {"Tipo_Canal", type text}, {"Punto_Venta_Digital", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

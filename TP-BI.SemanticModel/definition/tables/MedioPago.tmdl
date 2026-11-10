@@ -1,0 +1,49 @@
+table MedioPago
+	lineageTag: 436d7af8-580b-4c1b-95a7-bd1ef810a9bf
+
+	column ID_Medio_Pago
+		dataType: int64
+		formatString: 0
+		lineageTag: 854b266b-3076-4ce5-8db3-0697328fcafe
+		summarizeBy: none
+		sourceColumn: ID_Medio_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+	column Medio_Pago
+		dataType: string
+		lineageTag: c3defca9-5e1d-46d4-8c0c-229d28f55d4b
+		summarizeBy: none
+		sourceColumn: Medio_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Medio_Pago
+		dataType: string
+		lineageTag: f3380020-66c0-4a2b-a041-843d4aa57d79
+		summarizeBy: none
+		sourceColumn: Tipo_Medio_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+	column Permite_Cuotas
+		dataType: string
+		lineageTag: 7250612d-2f28-44e6-842e-4eb372ee6e08
+		summarizeBy: none
+		sourceColumn: Permite_Cuotas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MedioPago = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1qO-Y3JpVioBpL3qjRalNkP58IQ40nDLGJovBKOGLAxY/edit?gid=1550351481#gid=1550351481"),
+				  #"Navigation 1" = Source{[name = "dimMedioPago", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Medio_Pago", Int64.Type}, {"Medio_Pago", type text}, {"Tipo_Medio_Pago", type text}, {"Permite_Cuotas", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

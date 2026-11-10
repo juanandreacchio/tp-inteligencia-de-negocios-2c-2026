@@ -1,0 +1,177 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 600,
+        "y": 75
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1032.743455764233,
+            "y": 0
+          },
+          "nodeIndex": "Vendedor",
+          "nodeLineageTag": "3a87b7cb-e3c5-49a3-b4a9-efc74c30cf89",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1030.7434557642327,
+            "y": 571.04922448233924
+          },
+          "nodeIndex": "Canal",
+          "nodeLineageTag": "d0977607-5013-4d3e-b9a6-146b75238e08",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 141.02960002383463,
+            "y": 116.79716036435275
+          },
+          "nodeIndex": "Cliente",
+          "nodeLineageTag": "9c8c0a6b-6905-4525-beee-a57eab90f5bd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 486.15096275961685
+          },
+          "nodeIndex": "EstadoPedido",
+          "nodeLineageTag": "04dc47e4-7345-408e-b1aa-348adc5e9080",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 487.9232935528795,
+            "y": 281.42316858432486
+          },
+          "nodeIndex": "factVentas",
+          "nodeLineageTag": "d4f5582f-d1bb-48fc-9b5b-0327b8706027",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 714.293175345211,
+            "y": 52.3259602227879
+          },
+          "nodeIndex": "MedioPago",
+          "nodeLineageTag": "436d7af8-580b-4c1b-95a7-bd1ef810a9bf",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 396.83051218588184,
+            "y": 635.1626555445024
+          },
+          "nodeIndex": "Producto",
+          "nodeLineageTag": "1b5ea9b7-4f04-48e5-8152-2423538eb075",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 428.0512542691788,
+            "y": -50
+          },
+          "nodeIndex": "Promocion",
+          "nodeLineageTag": "1359edc3-d34e-4868-a2af-69595a98ff4d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 768.03069868448688,
+            "y": 635.12680268671784
+          },
+          "nodeIndex": "Sucursal",
+          "nodeLineageTag": "6481d7fd-fb42-45d3-9fb6-763fa7aec7ba",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1244.743455764233,
+            "y": 324.5813277722512
+          },
+          "nodeIndex": "Tiempo",
+          "nodeLineageTag": "3f6eff92-67e6-4e1c-a64a-1997d585d1c1",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1537.743455764233,
+            "y": 68.5813277722512
+          },
+          "nodeIndex": "Objetivo",
+          "nodeLineageTag": "10eb6560-7e54-4f13-9f06-d3b4d7c99d79",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1771.743455764233,
+            "y": 392.5813277722512
+          },
+          "nodeIndex": "Medidas",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

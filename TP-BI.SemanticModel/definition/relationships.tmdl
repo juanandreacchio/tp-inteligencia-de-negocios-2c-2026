@@ -1,0 +1,74 @@
+relationship ae61bfd2-d39f-408a-9570-ab5483d36b9d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vendedor.Fecha_Ingreso
+	toColumn: LocalDateTable_a8122332-a2cd-41e1-978f-51a38cba429b.Date
+
+relationship bd18932d-c346-4c4f-8520-9e3da53655cf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sucursal.Fecha_Apertura
+	toColumn: LocalDateTable_d7c6713c-b959-4303-b306-445628ee98ed.Date
+
+relationship 4f0008c8-10e2-4b17-8f5c-25bd18e5238b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cliente.Fecha_Nacimiento
+	toColumn: LocalDateTable_922c6455-6931-4221-a52f-625a5d6ceb75.Date
+
+relationship 9a21b9c4-741b-4061-8d1d-cb81c7d77475
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cliente.Fecha_Alta
+	toColumn: LocalDateTable_0fd027f6-7d3a-4ffb-beb1-a7ec3a9c77a4.Date
+
+relationship AutoDetected_4a9d46eb-dba0-4818-a340-49ee1729cc73
+	fromColumn: factVentas.ID_Vendedor
+	toColumn: Vendedor.ID_Vendedor
+
+relationship AutoDetected_4d9793b6-215a-4945-b0e8-1540b75d3cb8
+	fromColumn: factVentas.ID_Sucursal
+	toColumn: Sucursal.ID_Sucursal
+
+relationship AutoDetected_a27700fe-77cc-4d0f-96db-2398a4aa548f
+	fromColumn: factVentas.ID_Promocion
+	toColumn: Promocion.ID_Promocion
+
+relationship AutoDetected_f31cc682-0d2c-41c4-b8fc-64b1ebcf7ec7
+	fromColumn: factVentas.ID_Producto
+	toColumn: Producto.ID_Producto
+
+relationship AutoDetected_088c5b17-d85b-4573-8364-f2ed801fddc4
+	fromColumn: factVentas.ID_Medio_Pago
+	toColumn: MedioPago.ID_Medio_Pago
+
+relationship AutoDetected_73a2497a-9be5-467e-a282-afa784b2bfc0
+	fromColumn: factVentas.ID_Estado_Pedido
+	toColumn: EstadoPedido.ID_Estado_Pedido
+
+relationship AutoDetected_b52fae51-e9f6-451f-89e5-2beddda2f5c2
+	fromColumn: factVentas.ID_Cliente
+	toColumn: Cliente.ID_Cliente
+
+relationship AutoDetected_32219885-08f9-44d6-953e-bdd2ea4f1fd8
+	fromColumn: factVentas.ID_Canal
+	toColumn: Canal.ID_Canal
+
+relationship bc81aa3e-285b-47b2-94d9-c108a6f15839
+	joinOnDateBehavior: datePartOnly
+	fromColumn: factVentas.Fecha_Entrega
+	toColumn: LocalDateTable_5527431f-d623-40b3-bd1c-d25d3b8b025e.Date
+
+relationship AutoDetected_37f32129-3336-415b-a31e-7a410d53f0e4
+	fromColumn: Objetivo.ID_Vendedor
+	toColumn: Vendedor.ID_Vendedor
+
+relationship 2f3712f8-efef-4282-a921-7f144deebf05
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Tiempo.Fecha
+	toColumn: LocalDateTable_a1a7a96e-e843-4afa-9f5b-0e4e609fbf31.Date
+
+relationship b1332d9f-13b7-b73a-206c-c1d71e9102d5
+	fromColumn: factVentas.Fecha_Venta
+	toColumn: Tiempo.Fecha
+
+relationship 1669608c-5cb7-9a27-f1e1-b348107e8d8c
+	fromColumn: Objetivo.Fecha
+	toColumn: Tiempo.Fecha
+

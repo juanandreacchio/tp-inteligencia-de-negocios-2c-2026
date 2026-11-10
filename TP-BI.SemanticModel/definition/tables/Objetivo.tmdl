@@ -1,0 +1,62 @@
+table Objetivo
+	lineageTag: 10eb6560-7e54-4f13-9f06-d3b4d7c99d79
+
+	column ID_Vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 3122769c-023b-4d91-97b1-c5c32026c41c
+		summarizeBy: none
+		sourceColumn: ID_Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ejercicio
+		dataType: int64
+		formatString: 0
+		lineageTag: 09cd36a5-3699-4428-8cc0-61ac9f5abb65
+		summarizeBy: sum
+		sourceColumn: Ejercicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4cf303a6-0fa3-4296-8653-8d00bba5bdd9
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Objetivo
+		dataType: int64
+		formatString: 0
+		lineageTag: c5e879f4-02f9-4ff9-8a35-28c3e7521015
+		summarizeBy: sum
+		sourceColumn: Objetivo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Objetivo = m
+		mode: import
+		source =
+				let
+				    Unidas = Table.Combine({Obj2024, Obj2025}),
+				    SinNombre = Table.RemoveColumns(Unidas, {"Vendedor"}),
+				    Unpivot = Table.UnpivotOtherColumns(SinNombre, {"Año", "ID_Vendedor"}, "Mes", "Objetivo"),
+				    Tipos = Table.TransformColumnTypes(Unpivot,
+				        {{"Año", Int64.Type}, {"ID_Vendedor", Int64.Type}, {"Objetivo", Int64.Type}}, "es-AR"),
+				    MesesNum = [Jul=7, Ago=8, Sep=9, Oct=10, Nov=11, Dic=12, Ene=1, Feb=2, Mar=3, Abr=4, May=5, Jun=6],
+				    ConMesNum = Table.AddColumn(Tipos, "Mes_Num", each Record.Field(MesesNum, [Mes]), Int64.Type),
+				    ConFecha = Table.AddColumn(ConMesNum, "Fecha",
+				        each #date(if [Mes_Num] >= 7 then [Año] else [Año] + 1, [Mes_Num], 1), type date),
+				    Renombrado = Table.RenameColumns(ConFecha, {{"Año", "Ejercicio"}}),
+				    SinCeros = Table.SelectRows(Renombrado, each [Objetivo] <> 0),
+				    Final = Table.SelectColumns(SinCeros, {"ID_Vendedor", "Ejercicio", "Fecha", "Objetivo"})
+				in
+				    Final
+
+	annotation PBI_ResultType = Table
+

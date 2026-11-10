@@ -1,0 +1,59 @@
+table Promocion
+	lineageTag: 1359edc3-d34e-4868-a2af-69595a98ff4d
+
+	column ID_Promocion
+		dataType: int64
+		formatString: 0
+		lineageTag: fe0f1175-8cb0-4158-a3a7-7f2cf9def019
+		summarizeBy: none
+		sourceColumn: ID_Promocion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Promocion
+		dataType: string
+		lineageTag: fb91d71b-658b-41d1-ac4e-46f97879fdae
+		summarizeBy: none
+		sourceColumn: Promocion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Promocion
+		dataType: string
+		lineageTag: 76e4e1fd-2a3b-4247-aeb1-1f125b8b160a
+		summarizeBy: none
+		sourceColumn: Tipo_Promocion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Porcentaje_Descuento
+		dataType: double
+		lineageTag: 81103453-b0ee-43f6-9800-23e3c91d985a
+		summarizeBy: none
+		sourceColumn: Porcentaje_Descuento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Condicion
+		dataType: string
+		lineageTag: ba15c2e2-6769-4a68-934f-12b5f67521a8
+		summarizeBy: none
+		sourceColumn: Condicion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Promocion = m
+		mode: import
+		source =
+				let
+				  Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1ulMBKpaOtgnrQbOHPUUPJPyZid5voW6jvks6gA_gP0Q/edit?gid=1367420669#gid=1367420669"),
+				  #"Navigation 1" = Source{[name = "dimPromocion", ItemKind = "Table"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"ID_Promocion", Int64.Type}, {"Promocion", type text}, {"Tipo_Promocion", type text}, {"Porcentaje_Descuento", type number}, {"Condicion", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+
