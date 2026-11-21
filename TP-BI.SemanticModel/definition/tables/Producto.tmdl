@@ -3,6 +3,7 @@ table Producto
 
 	column ID_Producto
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: d9c9b018-1b11-4bde-b2d8-6e8abfd4d06e
 		summarizeBy: none
@@ -84,6 +85,21 @@ table Producto
 		sourceColumn: Margen_Unitario_Vigente
 
 		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Jerarquía Producto'
+		lineageTag: efbb116b-276d-4e9c-9da6-17d6a2870a8b
+
+		level Categoria
+			lineageTag: f238ae09-72d1-43a0-9ce0-2f6f23beeb35
+			column: Categoria
+
+		level Subcategoria
+			lineageTag: 85a591a5-27e7-4095-ac43-3309a6854e18
+			column: Subcategoria
+
+		level Producto
+			lineageTag: 91df7672-0dc8-4da2-9a6f-c56f2893ecd0
+			column: Producto
 
 	partition Producto = m
 		mode: import

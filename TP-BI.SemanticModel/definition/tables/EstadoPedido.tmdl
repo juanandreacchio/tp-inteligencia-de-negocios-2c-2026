@@ -3,6 +3,7 @@ table EstadoPedido
 
 	column ID_Estado_Pedido
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: a77e3746-1d45-4b29-b19d-b57c1be6f724
 		summarizeBy: none

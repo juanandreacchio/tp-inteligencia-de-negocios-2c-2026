@@ -3,6 +3,7 @@ table Sucursal
 
 	column ID_Sucursal
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: fd920a6d-7ff1-4e5e-ae76-9f2bd25a42b4
 		summarizeBy: none
@@ -48,6 +49,7 @@ table Sucursal
 		lineageTag: 2bd09f20-1ea5-4f4a-9e03-80f15d3f4a6d
 		summarizeBy: none
 		sourceColumn: Provincia
+		sortByColumn: Orden_Provincia
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,10 +70,11 @@ table Sucursal
 		annotation SummarizationSetBy = Automatic
 
 	column Orden_Provincia
+		isHidden
 		dataType: int64
 		formatString: 0
 		lineageTag: da9e51b3-c04f-47b3-827d-80c6a58d0866
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Orden_Provincia
 
 		annotation SummarizationSetBy = Automatic
@@ -97,14 +100,16 @@ table Sucursal
 		lineageTag: d493c8bb-0e41-4743-94cf-caec45e2e8c1
 		summarizeBy: none
 		sourceColumn: Ubicacion_Mapa
+		dataCategory: Place
 
 		annotation SummarizationSetBy = Automatic
 
 	column Latitud
 		dataType: double
 		lineageTag: cec543b8-ac56-4365-8c2b-be3a002b0f5a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Latitud
+		dataCategory: Latitude
 
 		annotation SummarizationSetBy = Automatic
 
@@ -113,8 +118,9 @@ table Sucursal
 	column Longitud
 		dataType: double
 		lineageTag: 2823608d-635f-4929-9f7a-1560b00fbbc5
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Longitud
+		dataCategory: Longitude
 
 		annotation SummarizationSetBy = Automatic
 
@@ -126,11 +132,6 @@ table Sucursal
 		lineageTag: 434e8d97-b59d-40b5-bbf7-afcc11065264
 		summarizeBy: none
 		sourceColumn: Fecha_Apertura
-
-		variation Variation
-			isDefault
-			relationship: bd18932d-c346-4c4f-8520-9e3da53655cf
-			defaultHierarchy: LocalDateTable_d7c6713c-b959-4303-b306-445628ee98ed.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -144,6 +145,21 @@ table Sucursal
 		sourceColumn: Superficie_m2
 
 		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Jerarquía Geográfica'
+		lineageTag: 67695cd9-3d86-404d-9349-fce890cec8a3
+
+		level Region
+			lineageTag: 56eee0c5-19dd-40c7-8aa9-20d2bf3206c1
+			column: Region
+
+		level Provincia
+			lineageTag: 1281e9a8-8636-4837-9e33-ea83a115e7ea
+			column: Provincia
+
+		level Sucursal
+			lineageTag: 425329d0-4f64-4caa-b1c5-a3f87aca1c34
+			column: Sucursal
 
 	partition Sucursal = m
 		mode: import

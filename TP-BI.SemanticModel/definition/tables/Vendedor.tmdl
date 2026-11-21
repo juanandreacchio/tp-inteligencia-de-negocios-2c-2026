@@ -3,6 +3,7 @@ table Vendedor
 
 	column ID_Vendedor
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 96230ce0-a1a4-40a9-8e98-1fee8addac9e
 		summarizeBy: none
@@ -68,9 +69,10 @@ table Vendedor
 
 	column ID_Manager
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: c604b7d8-3fe5-415e-b97c-3b0114fd9803
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ID_Manager
 
 		annotation SummarizationSetBy = Automatic
@@ -90,14 +92,20 @@ table Vendedor
 		summarizeBy: none
 		sourceColumn: Fecha_Ingreso
 
-		variation Variation
-			isDefault
-			relationship: ae61bfd2-d39f-408a-9570-ab5483d36b9d
-			defaultHierarchy: LocalDateTable_a8122332-a2cd-41e1-978f-51a38cba429b.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+	hierarchy 'Jerarquía Comercial'
+		lineageTag: 2312255f-041d-46fe-94eb-598f44af4370
+
+		level Gerente
+			lineageTag: 3c1f7a52-9d4e-4b8a-a6e1-5f2d8c7b9e10
+			column: Manager
+
+		level Vendedor
+			lineageTag: 9a4b6c8d-2e1f-4a3b-8c5d-6e7f8a9b0c1d
+			column: Vendedor
 
 	partition Vendedor = m
 		mode: import

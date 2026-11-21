@@ -3,6 +3,7 @@ table MedioPago
 
 	column ID_Medio_Pago
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 854b266b-3076-4ce5-8db3-0697328fcafe
 		summarizeBy: none

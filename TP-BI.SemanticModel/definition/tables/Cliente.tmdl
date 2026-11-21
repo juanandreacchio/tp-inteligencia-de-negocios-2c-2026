@@ -3,6 +3,7 @@ table Cliente
 
 	column ID_Cliente
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 30c1d4f4-412f-47af-92c7-ffab1d8f1afc
 		summarizeBy: none
@@ -64,11 +65,6 @@ table Cliente
 		lineageTag: 4e7ee0a1-96b2-4e92-be5e-38eaff072cb4
 		summarizeBy: none
 		sourceColumn: Fecha_Nacimiento
-
-		variation Variation
-			isDefault
-			relationship: 4f0008c8-10e2-4b17-8f5c-25bd18e5238b
-			defaultHierarchy: LocalDateTable_922c6455-6931-4221-a52f-625a5d6ceb75.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -135,6 +131,7 @@ table Cliente
 		lineageTag: 4347ed94-1b72-43de-8859-0331a2506aec
 		summarizeBy: none
 		sourceColumn: Ubicacion_Mapa
+		dataCategory: Place
 
 		annotation SummarizationSetBy = Automatic
 
@@ -144,11 +141,6 @@ table Cliente
 		lineageTag: f69a7b3d-ca72-4adb-b200-cb0160238995
 		summarizeBy: none
 		sourceColumn: Fecha_Alta
-
-		variation Variation
-			isDefault
-			relationship: 9a21b9c4-741b-4061-8d1d-cb81c7d77475
-			defaultHierarchy: LocalDateTable_0fd027f6-7d3a-4ffb-beb1-a7ec3a9c77a4.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 

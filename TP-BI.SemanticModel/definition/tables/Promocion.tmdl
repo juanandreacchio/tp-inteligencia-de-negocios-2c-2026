@@ -3,6 +3,7 @@ table Promocion
 
 	column ID_Promocion
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: fe0f1175-8cb0-4158-a3a7-7f2cf9def019
 		summarizeBy: none

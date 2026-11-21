@@ -1,4 +1,5 @@
 table Objetivo
+	isHidden
 	lineageTag: 10eb6560-7e54-4f13-9f06-d3b4d7c99d79
 
 	column ID_Vendedor

@@ -3,6 +3,7 @@ table Canal
 
 	column ID_Canal
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: d72ecba2-5a4d-4f55-bfa5-c687ca6317e6
 		summarizeBy: none

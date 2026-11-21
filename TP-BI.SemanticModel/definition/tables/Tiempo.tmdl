@@ -1,21 +1,20 @@
 table Tiempo
 	lineageTag: 3f6eff92-67e6-4e1c-a64a-1997d585d1c1
+	dataCategory: Time
 
 	column Fecha
-		formatString: General Date
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
 		lineageTag: 68868412-4be9-4906-b761-f70fbbb8c9f9
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Fecha]
 
-		variation Variation
-			isDefault
-			relationship: 2f3712f8-efef-4282-a921-7f144deebf05
-			defaultHierarchy: LocalDateTable_a1a7a96e-e843-4afa-9f5b-0e4e609fbf31.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 	column 'Codigo Fecha'
+		isHidden
 		lineageTag: a05869f0-f7ca-427f-8430-f8a838b830e8
 		summarizeBy: none
 		isNameInferred
@@ -26,7 +25,7 @@ table Tiempo
 	column Año
 		formatString: 0
 		lineageTag: dda3f86e-0276-49fc-b8a1-5f7eb79360a0
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Año]
 
@@ -41,6 +40,7 @@ table Tiempo
 		annotation SummarizationSetBy = Automatic
 
 	column 'Codigo Mes'
+		isHidden
 		lineageTag: 847d5f11-0e34-4acc-a19f-bb8d570e4b95
 		summarizeBy: none
 		isNameInferred
@@ -53,6 +53,7 @@ table Tiempo
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Anio Mes Corto]
+		sortByColumn: 'Codigo Mes'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -75,6 +76,7 @@ table Tiempo
 		annotation SummarizationSetBy = Automatic
 
 	column 'Codigo Dia Semana'
+		isHidden
 		formatString: 0
 		lineageTag: 23178195-c24b-4be8-a563-70f1ad4d3a25
 		summarizeBy: sum
@@ -88,6 +90,7 @@ table Tiempo
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Dia Semana]
+		sortByColumn: 'Codigo Dia Semana'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -96,10 +99,12 @@ table Tiempo
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Dia Semana Corto]
+		sortByColumn: 'Codigo Dia Semana'
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Codigo Trimeste'
+		isHidden
 		formatString: 0
 		lineageTag: 2e3b37b7-4498-4875-bfc8-a6d2c923c882
 		summarizeBy: sum
@@ -121,13 +126,14 @@ table Tiempo
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Anio Trimestre]
+		sortByColumn: 'Codigo Trimeste'
 
 		annotation SummarizationSetBy = Automatic
 
 	column Ejercicio
 		formatString: 0
 		lineageTag: e33fcbdb-7dae-48b9-bea0-7fa7de3f5b48
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Ejercicio]
 
@@ -162,16 +168,28 @@ table Tiempo
 
 		annotation SummarizationSetBy = Automatic
 
+	hierarchy 'Jerarquía Fiscal'
+		lineageTag: b15ebcd5-cdf7-43a5-b587-ac0c430a42f4
+
+		level Ejercicio
+			lineageTag: 59133894-7fb9-4654-99ab-05cf17eb1e9a
+			column: 'Ejercicio Desc'
+
+		level Mes
+			lineageTag: d2b1d017-e39d-4234-b8da-85493f41b5d1
+			column: 'Mes Corto'
+
+		level Fecha
+			lineageTag: 6d750e62-627f-4b7f-9ebe-c768a8bf77ba
+			column: Fecha
+
 	partition Tiempo = calculated
 		mode: import
 		source = ```
 				
 				SELECTCOLUMNS (
 				    ADDCOLUMNS (
-				        CALENDAR (
-				            MIN ( factVentas[Fecha_Venta] ),
-				            MAX ( factVentas[Fecha_Venta] )
-				        ),
+				        CALENDAR ( DATE ( 2024, 7, 1 ), DATE ( 2026, 6, 30 ) ),
 				        "Codigo Fecha", FORMAT ( [Date], "YYYYMMDD" ),
 				        "Año", YEAR ( [Date] ),
 				        "Mes", FORMAT ( [Date], "MM" ),
