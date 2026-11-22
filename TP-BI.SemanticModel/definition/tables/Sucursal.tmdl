@@ -70,8 +70,8 @@ table Sucursal
 		annotation SummarizationSetBy = Automatic
 
 	column Orden_Provincia
-		isHidden
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: da9e51b3-c04f-47b3-827d-80c6a58d0866
 		summarizeBy: none
@@ -98,18 +98,18 @@ table Sucursal
 	column Ubicacion_Mapa
 		dataType: string
 		lineageTag: d493c8bb-0e41-4743-94cf-caec45e2e8c1
+		dataCategory: Place
 		summarizeBy: none
 		sourceColumn: Ubicacion_Mapa
-		dataCategory: Place
 
 		annotation SummarizationSetBy = Automatic
 
 	column Latitud
 		dataType: double
 		lineageTag: cec543b8-ac56-4365-8c2b-be3a002b0f5a
+		dataCategory: Latitude
 		summarizeBy: none
 		sourceColumn: Latitud
-		dataCategory: Latitude
 
 		annotation SummarizationSetBy = Automatic
 
@@ -118,9 +118,9 @@ table Sucursal
 	column Longitud
 		dataType: double
 		lineageTag: 2823608d-635f-4929-9f7a-1560b00fbbc5
+		dataCategory: Longitude
 		summarizeBy: none
 		sourceColumn: Longitud
-		dataCategory: Longitude
 
 		annotation SummarizationSetBy = Automatic
 

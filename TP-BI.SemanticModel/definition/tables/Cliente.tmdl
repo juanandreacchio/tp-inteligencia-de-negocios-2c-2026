@@ -129,9 +129,9 @@ table Cliente
 	column Ubicacion_Mapa
 		dataType: string
 		lineageTag: 4347ed94-1b72-43de-8859-0331a2506aec
+		dataCategory: Place
 		summarizeBy: none
 		sourceColumn: Ubicacion_Mapa
-		dataCategory: Place
 
 		annotation SummarizationSetBy = Automatic
 
