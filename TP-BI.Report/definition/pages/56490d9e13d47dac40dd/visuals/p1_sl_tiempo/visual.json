@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p1_sl_tiempo",
+  "position": {
+    "x": 16,
+    "y": 88,
+    "z": 100,
+    "height": 78,
+    "width": 260,
+    "tabOrder": 100
+  },
+  "visual": {
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ejercicio y mes'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Ejercicio"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Ejercicio",
+              "nativeQueryRef": "Jerarquía Fiscal Ejercicio"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Mes",
+              "nativeQueryRef": "Jerarquía Fiscal Mes"
+            }
+          ]
+        }
+      }
+    },
+    "syncGroup": {
+      "groupName": "Tiempo",
+      "fieldChanges": true,
+      "filterChanges": true
+    }
+  }
+}

@@ -118,8 +118,7 @@ table Medidas
 		lineageTag: dcae97db-65ae-4b8b-9e75-199f191ac091
 
 	/// Pedidos devueltos sobre el total de pedidos (todos los estados)
-	measure 'Tasa de Devolución' =
-			DIVIDE ( [Pedidos Devueltos], COUNTROWS ( factVentas ) )
+	measure 'Tasa de Devolución' = DIVIDE ( [Pedidos Devueltos], COUNTROWS ( factVentas ) )
 		formatString: 0.0%
 		displayFolder: 2. Clientes
 		lineageTag: af3697a7-2b74-48ad-8c04-d3b1f28344d3
@@ -129,6 +128,12 @@ table Medidas
 		formatString: 0.0%
 		displayFolder: 2. Clientes
 		lineageTag: 13f1a0e0-2af0-44b1-b29d-e630356fc110
+
+	/// Participación de la venta neta del cliente dentro de su segmento. Quita solo el filtro de Cliente[Cliente], así no la afecta el filtro Top N del visual
+	measure '% Participación en Segmento' = DIVIDE ( [Venta Neta], CALCULATE ( [Venta Neta], REMOVEFILTERS ( Cliente[Cliente] ) ) )
+		formatString: 0.0%
+		displayFolder: 2. Clientes
+		lineageTag: b01b7687-1340-4575-a016-feab218d7478
 
 	/// Suma del objetivo mensual de venta neta de los vendedores
 	measure Objetivo = SUM ( Objetivo[Objetivo] )
