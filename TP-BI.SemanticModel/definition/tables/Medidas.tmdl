@@ -69,8 +69,12 @@ table Medidas
 		displayFolder: 4. Comparativos
 		lineageTag: 92e73737-25e1-4add-a260-d2b83bdbf7fd
 
-	/// Variación % de la venta neta contra el ejercicio anterior
-	measure 'Var. vs Ejercicio Anterior' = DIVIDE ( [Venta Neta] - [Venta Neta EA], [Venta Neta EA] )
+	/// Variación % de la venta neta contra el ejercicio anterior. En blanco si hay más de un ejercicio en contexto (sin filtro sumaría ambos ejercicios contra uno solo)
+	measure 'Var. vs Ejercicio Anterior' =
+			IF (
+			    HASONEVALUE ( Tiempo[Ejercicio] ),
+			    DIVIDE ( [Venta Neta] - [Venta Neta EA], [Venta Neta EA] )
+			)
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 4. Comparativos
 		lineageTag: 007b22c4-61a8-49a7-afa7-9d507845d0eb
@@ -174,6 +178,11 @@ table Medidas
 		formatString: 0
 		displayFolder: 3. Objetivos
 		lineageTag: 80a69951-e070-4856-a4db-7139c127a611
+
+	/// Nombre de la sucursal en contexto. Para tooltips del mapa por latitud/longitud, donde Sucursal no puede ir como ubicación
+	measure 'Sucursal Seleccionada' = SELECTEDVALUE ( Sucursal[Sucursal], "Varias sucursales" )
+		displayFolder: 5. Auxiliares
+		lineageTag: 5e0c2b7a-8d41-4f6e-9a3c-71b2d4e8f905
 
 	column Column
 		isHidden
