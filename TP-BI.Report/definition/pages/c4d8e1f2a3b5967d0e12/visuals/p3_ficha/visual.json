@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p3_ficha",
+  "position": {
+    "x": 292,
+    "y": 88,
+    "z": 150,
+    "height": 80,
+    "width": 1612,
+    "tabOrder": 150
+  },
+  "visual": {
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Vendedor"
+                }
+              },
+              "queryRef": "Vendedor.Vendedor",
+              "nativeQueryRef": "Vendedor",
+              "displayName": "Vendedor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Cargo"
+                }
+              },
+              "queryRef": "Vendedor.Cargo",
+              "nativeQueryRef": "Cargo",
+              "displayName": "Cargo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Clasificacion"
+                }
+              },
+              "queryRef": "Vendedor.Clasificacion",
+              "nativeQueryRef": "Clasificacion",
+              "displayName": "Clasificación"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Equipo"
+                }
+              },
+              "queryRef": "Vendedor.Equipo",
+              "nativeQueryRef": "Equipo",
+              "displayName": "Equipo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Zona_Comercial"
+                }
+              },
+              "queryRef": "Vendedor.Zona_Comercial",
+              "nativeQueryRef": "Zona_Comercial",
+              "displayName": "Zona comercial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Manager"
+                }
+              },
+              "queryRef": "Vendedor.Manager",
+              "nativeQueryRef": "Manager",
+              "displayName": "Gerente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Sucursal_Base"
+                }
+              },
+              "queryRef": "Vendedor.Sucursal_Base",
+              "nativeQueryRef": "Sucursal_Base",
+              "displayName": "Sucursal base"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Fecha_Ingreso"
+                }
+              },
+              "queryRef": "Vendedor.Fecha_Ingreso",
+              "nativeQueryRef": "Fecha_Ingreso",
+              "displayName": "Fecha de ingreso"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

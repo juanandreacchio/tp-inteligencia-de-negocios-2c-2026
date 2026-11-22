@@ -44,7 +44,34 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Tamaño de la burbuja = venta neta'"
+                  "Value": "'Tamaño = venta neta · Pasá el mouse para ver su evolución mensual'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'d9a1b2c3e4f5061728ab'"
                 }
               }
             }

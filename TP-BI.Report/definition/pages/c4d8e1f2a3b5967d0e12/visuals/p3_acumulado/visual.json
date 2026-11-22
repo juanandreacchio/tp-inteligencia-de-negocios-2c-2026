@@ -1,0 +1,264 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p3_acumulado",
+  "position": {
+    "x": 1106,
+    "y": 312,
+    "z": 301,
+    "height": 370,
+    "width": 798,
+    "tabOrder": 301
+  },
+  "visual": {
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Acumulado del ejercicio vs objetivo acumulado'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'El acumulado se reinicia cada 1 de julio'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "showMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "selector": {
+            "metadata": "Medidas.Objetivo Acum. Ejercicio"
+          },
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E8772E'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta Acum. Ejercicio"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta Acum. Ejercicio",
+              "nativeQueryRef": "Venta Neta Acum. Ejercicio",
+              "displayName": "Venta neta acumulada"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Objetivo Acum. Ejercicio"
+                }
+              },
+              "queryRef": "Medidas.Objetivo Acum. Ejercicio",
+              "nativeQueryRef": "Objetivo Acum. Ejercicio",
+              "displayName": "Objetivo acumulado"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Ejercicio"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Ejercicio",
+              "nativeQueryRef": "Jerarquía Fiscal Ejercicio",
+              "displayName": "Ejercicio",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Mes",
+              "nativeQueryRef": "Jerarquía Fiscal Mes",
+              "displayName": "Mes",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Tiempo"
+                      }
+                    },
+                    "Hierarchy": "Jerarquía Fiscal"
+                  }
+                },
+                "Level": "Ejercicio"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Tiempo"
+                      }
+                    },
+                    "Hierarchy": "Jerarquía Fiscal"
+                  }
+                },
+                "Level": "Mes"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    }
+  }
+}

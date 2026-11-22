@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "d9a1b2c3e4f5061728ab",
+  "displayName": "Tooltip Evolución Sucursal",
+  "displayOption": "ActualSize",
+  "height": 240,
+  "width": 320,
+  "type": "Tooltip",
+  "visibility": "HiddenInViewMode",
+  "pageBinding": {
+    "name": "a51f0c7e92b4d3e86f10",
+    "type": "Tooltip",
+    "referenceScope": "Default"
+  }
+}
