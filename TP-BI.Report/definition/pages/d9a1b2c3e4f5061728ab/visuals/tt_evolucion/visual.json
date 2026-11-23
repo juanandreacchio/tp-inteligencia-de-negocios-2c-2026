@@ -1,49 +1,95 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "tt_evolucion",
   "position": {
     "x": 0,
     "y": 44,
     "z": 1,
     "height": 196,
-    "width": 320,
+    "width": 480,
     "tabOrder": 1
   },
   "visual": {
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Mes Corto"
                 }
+              },
+              "queryRef": "Tiempo.Mes Corto",
+              "nativeQueryRef": "Mes Corto",
+              "active": true,
+              "displayName": "Mes"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Ejercicio Desc"
+                }
+              },
+              "queryRef": "Tiempo.Ejercicio Desc",
+              "nativeQueryRef": "Ejercicio Desc",
+              "displayName": "Ejercicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta",
+              "nativeQueryRef": "Venta Neta",
+              "displayName": "Venta neta"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Tiempo"
+                  }
+                },
+                "Property": "Mes Corto"
               }
             },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Venta neta mensual por ejercicio'"
-                }
-              }
-            }
+            "direction": "Ascending"
           }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "objects": {
       "valueAxis": [
@@ -113,86 +159,41 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "visualType": "lineChart",
-    "query": {
-      "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Tiempo"
-                    }
-                  },
-                  "Property": "Mes Corto"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
-              },
-              "queryRef": "Tiempo.Mes Corto",
-              "nativeQueryRef": "Mes Corto",
-              "displayName": "Mes"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Venta Neta"
-                }
-              },
-              "queryRef": "Medidas.Venta Neta",
-              "nativeQueryRef": "Venta Neta",
-              "displayName": "Venta neta"
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Tiempo"
-                    }
-                  },
-                  "Property": "Ejercicio Desc"
-                }
-              },
-              "queryRef": "Tiempo.Ejercicio Desc",
-              "nativeQueryRef": "Ejercicio Desc",
-              "displayName": "Ejercicio"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Tiempo"
-                  }
-                },
-                "Property": "Mes Corto"
               }
             },
-            "direction": "Ascending"
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Venta neta mensual por ejercicio'"
+                }
+              }
+            }
           }
-        ],
-        "isDefaultSort": true
-      }
-    }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

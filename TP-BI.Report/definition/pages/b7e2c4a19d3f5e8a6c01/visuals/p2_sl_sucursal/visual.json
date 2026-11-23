@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p2_sl_sucursal",
   "position": {
     "x": 16,
@@ -10,6 +10,30 @@
     "tabOrder": 103
   },
   "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sucursal"
+                    }
+                  },
+                  "Property": "Sucursal"
+                }
+              },
+              "queryRef": "Sucursal.Sucursal",
+              "nativeQueryRef": "Sucursal",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
     "objects": {
       "data": [
         {
@@ -38,7 +62,6 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
@@ -74,33 +97,11 @@
         }
       ]
     },
-    "visualType": "slicer",
-    "query": {
-      "queryState": {
-        "Values": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Sucursal"
-                    }
-                  },
-                  "Property": "Sucursal"
-                }
-              },
-              "queryRef": "Sucursal.Sucursal",
-              "nativeQueryRef": "Sucursal"
-            }
-          ]
-        }
-      }
-    },
     "syncGroup": {
       "groupName": "Sucursal",
       "fieldChanges": true,
       "filterChanges": true
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

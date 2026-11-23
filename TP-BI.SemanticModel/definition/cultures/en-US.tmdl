@@ -496,7 +496,7 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Var. vs ej. anterior (elegí un ejercicio)": {
+			          "Var. último ejercicio vs anterior": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

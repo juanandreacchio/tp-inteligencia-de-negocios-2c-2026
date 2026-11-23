@@ -4,12 +4,12 @@
   "displayName": "Tooltip Evolución Sucursal",
   "displayOption": "ActualSize",
   "height": 240,
-  "width": 320,
-  "type": "Tooltip",
-  "visibility": "HiddenInViewMode",
+  "width": 480,
   "pageBinding": {
     "name": "a51f0c7e92b4d3e86f10",
     "type": "Tooltip",
-    "referenceScope": "Default"
-  }
+    "parameters": []
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
 }

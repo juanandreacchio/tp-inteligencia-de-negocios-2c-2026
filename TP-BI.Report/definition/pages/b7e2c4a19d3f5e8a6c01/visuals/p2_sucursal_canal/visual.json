@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p2_sucursal_canal",
   "position": {
     "x": 1540,
@@ -10,40 +10,86 @@
     "tabOrder": 403
   },
   "visual": {
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sucursal"
+                    }
+                  },
+                  "Property": "Sucursal"
                 }
+              },
+              "queryRef": "Sucursal.Sucursal",
+              "nativeQueryRef": "Sucursal",
+              "active": true,
+              "displayName": "Sucursal"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Canal"
+                    }
+                  },
+                  "Property": "Canal"
+                }
+              },
+              "queryRef": "Canal.Canal",
+              "nativeQueryRef": "Canal",
+              "displayName": "Canal"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta",
+              "nativeQueryRef": "Venta Neta",
+              "displayName": "Venta neta"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Venta Neta"
               }
             },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Venta neta por sucursal y canal'"
-                }
-              }
-            }
+            "direction": "Descending"
           }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "objects": {
       "legend": [
@@ -80,86 +126,41 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "visualType": "barChart",
-    "query": {
-      "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Sucursal"
-                    }
-                  },
-                  "Property": "Sucursal"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
-              },
-              "queryRef": "Sucursal.Sucursal",
-              "nativeQueryRef": "Sucursal",
-              "displayName": "Sucursal"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Venta Neta"
-                }
-              },
-              "queryRef": "Medidas.Venta Neta",
-              "nativeQueryRef": "Venta Neta",
-              "displayName": "Venta neta"
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Canal"
-                    }
-                  },
-                  "Property": "Canal"
-                }
-              },
-              "queryRef": "Canal.Canal",
-              "nativeQueryRef": "Canal",
-              "displayName": "Canal"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Medidas"
-                  }
-                },
-                "Property": "Venta Neta"
               }
             },
-            "direction": "Descending"
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Venta neta por sucursal y canal'"
+                }
+              }
+            }
           }
-        ],
-        "isDefaultSort": true
-      }
-    }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

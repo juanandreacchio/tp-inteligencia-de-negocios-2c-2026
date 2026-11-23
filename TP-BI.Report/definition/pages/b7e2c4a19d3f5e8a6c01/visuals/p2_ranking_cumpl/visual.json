@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p2_ranking_cumpl",
   "position": {
     "x": 908,
@@ -10,58 +10,135 @@
     "tabOrder": 301
   },
   "visual": {
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Vendedor"
                 }
+              },
+              "queryRef": "Vendedor.Vendedor",
+              "nativeQueryRef": "Vendedor",
+              "active": true,
+              "displayName": "Vendedor"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Ranking Cumplimiento"
+                }
+              },
+              "queryRef": "Medidas.Ranking Cumplimiento",
+              "nativeQueryRef": "Ranking Cumplimiento",
+              "displayName": "Ranking"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta",
+              "nativeQueryRef": "Venta Neta",
+              "displayName": "Venta neta"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Objetivo"
+                }
+              },
+              "queryRef": "Medidas.Objetivo",
+              "nativeQueryRef": "Objetivo",
+              "displayName": "Objetivo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Brecha vs Objetivo"
+                }
+              },
+              "queryRef": "Medidas.Brecha vs Objetivo",
+              "nativeQueryRef": "Brecha vs Objetivo",
+              "displayName": "Brecha vs objetivo"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Cumplimiento"
+                }
+              },
+              "queryRef": "Medidas.% Cumplimiento",
+              "nativeQueryRef": "% Cumplimiento",
+              "displayName": "% Cumplimiento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "% Cumplimiento"
               }
             },
-            "text": {
-              "expr": {
-                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Cumplimiento Vendedores" }
-              }
-            }
+            "direction": "Ascending"
           }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Rojo < 90% · Amarillo 90-100% · Verde ≥ 100%'"
-                }
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "objects": {
       "dataPoint": [
         {
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ]
-          },
           "properties": {
             "fill": {
               "solid": {
@@ -134,6 +211,15 @@
                 }
               }
             }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
           }
         }
       ],
@@ -164,131 +250,53 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "visualType": "clusteredBarChart",
-    "query": {
-      "queryState": {
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Ranking Cumplimiento"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
-              },
-              "queryRef": "Medidas.Ranking Cumplimiento",
-              "nativeQueryRef": "Ranking Cumplimiento",
-              "displayName": "Ranking"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Venta Neta"
-                }
-              },
-              "queryRef": "Medidas.Venta Neta",
-              "nativeQueryRef": "Venta Neta",
-              "displayName": "Venta neta"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Objetivo"
-                }
-              },
-              "queryRef": "Medidas.Objetivo",
-              "nativeQueryRef": "Objetivo",
-              "displayName": "Objetivo"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Brecha vs Objetivo"
-                }
-              },
-              "queryRef": "Medidas.Brecha vs Objetivo",
-              "nativeQueryRef": "Brecha vs Objetivo",
-              "displayName": "Brecha vs objetivo"
-            }
-          ]
-        },
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Vendedor"
-                    }
-                  },
-                  "Property": "Vendedor"
-                }
-              },
-              "queryRef": "Vendedor.Vendedor",
-              "nativeQueryRef": "Vendedor",
-              "displayName": "Vendedor"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "% Cumplimiento"
-                }
-              },
-              "queryRef": "Medidas.% Cumplimiento",
-              "nativeQueryRef": "% Cumplimiento",
-              "displayName": "% Cumplimiento"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Medidas"
-                  }
-                },
-                "Property": "% Cumplimiento"
               }
             },
-            "direction": "Ascending"
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Título Cumplimiento Vendedores"
+                }
+              }
+            }
           }
-        ],
-        "isDefaultSort": true
-      }
-    }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Rojo < 90% · Amarillo 90-100% · Verde ≥ 100%'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

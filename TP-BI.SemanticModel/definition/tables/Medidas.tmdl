@@ -11,16 +11,6 @@ table Medidas
 		displayFolder: 1. Ventas
 		lineageTag: 7d509bee-37e6-4651-8c1b-490325afaaf9
 
-	/// Margen bruto en pesos de las ventas efectivas
-	measure 'Margen Bruto' =
-			CALCULATE (
-			    SUM ( factVentas[Margen_Bruto] ),
-			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
-			)
-		formatString: \$ #,0
-		displayFolder: 1. Ventas
-		lineageTag: 3d93aa3f-d613-4675-b442-a9e7ccd652bc
-
 	/// Margen bruto sobre venta neta
 	measure 'Margen Bruto %' = DIVIDE ( [Margen Bruto], [Venta Neta] )
 		formatString: 0.0%
@@ -37,31 +27,33 @@ table Medidas
 		displayFolder: 1. Ventas
 		lineageTag: 9f7ec5de-4b5f-4e4e-ac75-f06e72bd42b5
 
-	/// Cantidad de comprobantes emitidos (ventas efectivas). Según el Diccionario, cada fila de factVentas es un comprobante
-	measure Comprobantes =
-			CALCULATE (
-			    COUNTROWS ( factVentas ),
-			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
-			)
-		formatString: #,0
-		displayFolder: 1. Ventas
-		lineageTag: 2aa918fb-f381-4c60-a255-f2da6d76dbfe
-
 	/// Venta neta por comprobante emitido
 	measure 'Ticket Promedio' = DIVIDE ( [Venta Neta], [Comprobantes] )
 		formatString: \$ #,0
 		displayFolder: 1. Ventas
 		lineageTag: 94fdb449-87fc-40ed-87e3-5a4854eeda01
 
-	/// Venta neta usando la fecha de entrega (activa la relación inactiva factVentas[Fecha_Entrega] -> Tiempo[Fecha])
-	measure 'Venta Neta por Fecha Entrega' =
+	/// Clientes distintos con compras efectivas en el período
+	measure 'Clientes Activos' =
 			CALCULATE (
-			    [Venta Neta],
-			    USERELATIONSHIP ( factVentas[Fecha_Entrega], Tiempo[Fecha] )
+			    DISTINCTCOUNT ( factVentas[ID_Cliente] ),
+			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
 			)
+		formatString: #,0
+		displayFolder: 2. Clientes
+		lineageTag: d005d67e-5aea-4042-8028-e82ac65b2299
+
+	/// Suma del objetivo mensual de venta neta de los vendedores
+	measure Objetivo = SUM ( Objetivo[Objetivo] )
 		formatString: \$ #,0
-		displayFolder: 1. Ventas
-		lineageTag: 3c32c7dd-1956-4440-bf7b-90aaf14aadcd
+		displayFolder: 3. Objetivos
+		lineageTag: 84626062-0546-4ef9-bead-81db366ac4ec
+
+	/// Venta neta sobre objetivo
+	measure '% Cumplimiento' = DIVIDE ( [Venta Neta], [Objetivo] )
+		formatString: 0.0%
+		displayFolder: 3. Objetivos
+		lineageTag: 91df01c2-3f4a-4f81-845a-a34234b5be11
 
 	/// Venta neta del mismo período del ejercicio anterior
 	measure 'Venta Neta EA' = CALCULATE ( [Venta Neta], SAMEPERIODLASTYEAR ( Tiempo[Fecha] ) )
@@ -81,21 +73,41 @@ table Medidas
 		displayFolder: 4. Comparativos
 		lineageTag: 007b22c4-61a8-49a7-afa7-9d507845d0eb
 
+	/// Margen bruto en pesos de las ventas efectivas
+	measure 'Margen Bruto' =
+			CALCULATE (
+			    SUM ( factVentas[Margen_Bruto] ),
+			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
+			)
+		formatString: \$ #,0
+		displayFolder: 1. Ventas
+		lineageTag: 3d93aa3f-d613-4675-b442-a9e7ccd652bc
+
+	/// Cantidad de comprobantes emitidos (ventas efectivas). Según el Diccionario, cada fila de factVentas es un comprobante
+	measure Comprobantes =
+			CALCULATE (
+			    COUNTROWS ( factVentas ),
+			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
+			)
+		formatString: #,0
+		displayFolder: 1. Ventas
+		lineageTag: 2aa918fb-f381-4c60-a255-f2da6d76dbfe
+
+	/// Venta neta usando la fecha de entrega (activa la relación inactiva factVentas[Fecha_Entrega] -> Tiempo[Fecha])
+	measure 'Venta Neta por Fecha Entrega' =
+			CALCULATE (
+			    [Venta Neta],
+			    USERELATIONSHIP ( factVentas[Fecha_Entrega], Tiempo[Fecha] )
+			)
+		formatString: \$ #,0
+		displayFolder: 1. Ventas
+		lineageTag: 3c32c7dd-1956-4440-bf7b-90aaf14aadcd
+
 	/// Venta neta acumulada del ejercicio fiscal (cierra el 30/06)
 	measure 'Venta Neta Acum. Ejercicio' = TOTALYTD ( [Venta Neta], Tiempo[Fecha], "6/30" )
 		formatString: \$ #,0
 		displayFolder: 4. Comparativos
 		lineageTag: c07f984a-5f5b-41ff-884b-e3f17c444bb1
-
-	/// Clientes distintos con compras efectivas en el período
-	measure 'Clientes Activos' =
-			CALCULATE (
-			    DISTINCTCOUNT ( factVentas[ID_Cliente] ),
-			    KEEPFILTERS ( EstadoPedido[Es_Venta_Efectiva] = "Sí" )
-			)
-		formatString: #,0
-		displayFolder: 2. Clientes
-		lineageTag: d005d67e-5aea-4042-8028-e82ac65b2299
 
 	/// Clientes dados de alta en el período (Cliente[Fecha_Alta] filtrada por Tiempo sin relación física)
 	measure 'Clientes Nuevos' =
@@ -140,18 +152,6 @@ table Medidas
 		formatString: 0.0%
 		displayFolder: 2. Clientes
 		lineageTag: b01b7687-1340-4575-a016-feab218d7478
-
-	/// Suma del objetivo mensual de venta neta de los vendedores
-	measure Objetivo = SUM ( Objetivo[Objetivo] )
-		formatString: \$ #,0
-		displayFolder: 3. Objetivos
-		lineageTag: 84626062-0546-4ef9-bead-81db366ac4ec
-
-	/// Venta neta sobre objetivo
-	measure '% Cumplimiento' = DIVIDE ( [Venta Neta], [Objetivo] )
-		formatString: 0.0%
-		displayFolder: 3. Objetivos
-		lineageTag: 91df01c2-3f4a-4f81-845a-a34234b5be11
 
 	/// Diferencia en pesos entre venta neta y objetivo
 	measure 'Brecha vs Objetivo' = IF ( NOT ISBLANK ( [Objetivo] ), [Venta Neta] - [Objetivo] )

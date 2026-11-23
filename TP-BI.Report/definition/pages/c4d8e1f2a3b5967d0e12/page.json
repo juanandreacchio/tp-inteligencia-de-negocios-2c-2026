@@ -5,29 +5,6 @@
   "displayOption": "FitToPage",
   "height": 1080,
   "width": 1920,
-  "type": "Drillthrough",
-  "visibility": "HiddenInViewMode",
-  "pageBinding": {
-    "name": "e3b7d2a90c4f58e1a6d2",
-    "type": "Drillthrough",
-    "referenceScope": "Default",
-    "parameters": [
-      {
-        "name": "b8c1e4f7a2d5096e3f41",
-        "boundFilter": "f_detalle_vendedor",
-        "fieldExpr": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Vendedor"
-              }
-            },
-            "Property": "Vendedor"
-          }
-        }
-      }
-    ]
-  },
   "filterConfig": {
     "filters": [
       {
@@ -46,5 +23,33 @@
         "howCreated": "Drillthrough"
       }
     ]
-  }
+  },
+  "pageBinding": {
+    "name": "e3b7d2a90c4f58e1a6d2",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "b8c1e4f7a2d5096e3f41",
+        "boundFilter": "f_detalle_vendedor",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Vendedor"
+              }
+            },
+            "Property": "Vendedor"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Drillthrough",
+  "visualInteractions": [
+    { "source": "p3_acumulado", "target": "p3_evolucion", "type": "DataFilter" },
+    { "source": "p3_por_canal", "target": "p3_evolucion", "type": "DataFilter" },
+    { "source": "p3_por_categoria", "target": "p3_evolucion", "type": "DataFilter" },
+    { "source": "p3_ficha", "target": "p3_evolucion", "type": "DataFilter" }
+  ]
 }

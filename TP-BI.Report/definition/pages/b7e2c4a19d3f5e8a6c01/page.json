@@ -4,5 +4,13 @@
   "displayName": "Análisis por Vendedor",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "visualInteractions": [
+    { "source": "p2_venta_vs_objetivo", "target": "p2_ranking_cumpl", "type": "DataFilter" },
+    { "source": "p2_matriz_comercial", "target": "p2_ranking_cumpl", "type": "DataFilter" },
+    { "source": "p2_mapa_sucursales", "target": "p2_ranking_cumpl", "type": "DataFilter" },
+    { "source": "p2_por_clasificacion", "target": "p2_ranking_cumpl", "type": "DataFilter" },
+    { "source": "p2_por_zona", "target": "p2_ranking_cumpl", "type": "DataFilter" },
+    { "source": "p2_sucursal_canal", "target": "p2_ranking_cumpl", "type": "DataFilter" }
+  ]
 }

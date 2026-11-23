@@ -4,5 +4,23 @@
   "displayName": "Análisis por Cliente",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "visualInteractions": [
+    { "source": "p1_venta_mediopago", "target": "p1_kpi_nuevos", "type": "NoFilter" },
+    { "source": "p1_venta_mediopago", "target": "p1_clientes_nuevos", "type": "NoFilter" },
+    { "source": "p1_mapa_clientes", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_top10_clientes", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_evolucion_clientes", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_clientes_nuevos", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_venta_mediopago", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_venta_cuotas", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_satisfaccion", "target": "p1_venta_segmento", "type": "DataFilter" },
+    { "source": "p1_mapa_clientes", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_top10_clientes", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_evolucion_clientes", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_clientes_nuevos", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_venta_mediopago", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_venta_cuotas", "target": "p1_satisfaccion", "type": "DataFilter" },
+    { "source": "p1_venta_segmento", "target": "p1_satisfaccion", "type": "DataFilter" }
+  ]
 }

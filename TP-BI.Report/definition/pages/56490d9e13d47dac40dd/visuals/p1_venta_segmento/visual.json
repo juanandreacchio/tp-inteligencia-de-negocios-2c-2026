@@ -176,7 +176,14 @@
             },
             "text": {
               "expr": {
-                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Venta por Segmento" }
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Título Venta por Segmento"
+                }
               }
             }
           }

@@ -23,7 +23,14 @@
             },
             "text": {
               "expr": {
-                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Detalle Vendedor" }
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Título Detalle Vendedor"
+                }
               }
             }
           }

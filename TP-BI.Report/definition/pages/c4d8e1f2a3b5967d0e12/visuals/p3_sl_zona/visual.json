@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p3_sl_zona",
   "position": {
     "x": 16,
@@ -10,6 +10,30 @@
     "tabOrder": 101
   },
   "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vendedor"
+                    }
+                  },
+                  "Property": "Zona_Comercial"
+                }
+              },
+              "queryRef": "Vendedor.Zona_Comercial",
+              "nativeQueryRef": "Zona_Comercial",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
     "objects": {
       "data": [
         {
@@ -36,9 +60,13 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
@@ -74,33 +102,11 @@
         }
       ]
     },
-    "visualType": "slicer",
-    "query": {
-      "queryState": {
-        "Values": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Vendedor"
-                    }
-                  },
-                  "Property": "Zona_Comercial"
-                }
-              },
-              "queryRef": "Vendedor.Zona_Comercial",
-              "nativeQueryRef": "Zona_Comercial"
-            }
-          ]
-        }
-      }
-    },
     "syncGroup": {
       "groupName": "ZonaComercial",
       "fieldChanges": true,
       "filterChanges": true
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }
