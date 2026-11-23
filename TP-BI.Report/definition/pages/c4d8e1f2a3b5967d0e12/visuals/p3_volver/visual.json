@@ -101,9 +101,6 @@
       ],
       "text": [
         {
-          "selector": {
-            "id": "default"
-          },
           "properties": {
             "show": {
               "expr": {
@@ -111,7 +108,14 @@
                   "Value": "true"
                 }
               }
-            },
+            }
+          }
+        },
+        {
+          "selector": {
+            "id": "default"
+          },
+          "properties": {
             "text": {
               "expr": {
                 "Literal": {
@@ -149,9 +153,6 @@
       ],
       "fill": [
         {
-          "selector": {
-            "id": "default"
-          },
           "properties": {
             "show": {
               "expr": {
@@ -159,7 +160,14 @@
                   "Value": "true"
                 }
               }
-            },
+            }
+          }
+        },
+        {
+          "selector": {
+            "id": "default"
+          },
+          "properties": {
             "fillColor": {
               "solid": {
                 "color": {
@@ -183,9 +191,6 @@
       ],
       "outline": [
         {
-          "selector": {
-            "id": "default"
-          },
           "properties": {
             "show": {
               "expr": {
@@ -200,5 +205,6 @@
     },
     "visualType": "actionButton",
     "drillFilterOtherVisuals": true
-  }
+  },
+  "howCreated": "InsertVisualButton"
 }
