@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p1_evolucion_clientes",
   "position": {
     "x": 292,
@@ -10,6 +10,109 @@
     "tabOrder": 400
   },
   "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Anio Mes Corto"
+                }
+              },
+              "queryRef": "Tiempo.Anio Mes Corto",
+              "nativeQueryRef": "Anio Mes Corto",
+              "active": true,
+              "displayName": "Mes"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Clientes Nuevos"
+                }
+              },
+              "queryRef": "Medidas.Clientes Nuevos",
+              "nativeQueryRef": "Clientes Nuevos",
+              "displayName": "Clientes nuevos"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Clientes Activos"
+                }
+              },
+              "queryRef": "Medidas.Clientes Activos",
+              "nativeQueryRef": "Clientes Activos",
+              "displayName": "Clientes activos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Tiempo"
+                  }
+                },
+                "Property": "Anio Mes Corto"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -45,108 +148,6 @@
         }
       ]
     },
-    "objects": {
-      "legend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "drillFilterOtherVisuals": true,
-    "visualType": "lineClusteredColumnComboChart",
-    "query": {
-      "queryState": {
-        "Y2": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Clientes Activos"
-                }
-              },
-              "queryRef": "Medidas.Clientes Activos",
-              "nativeQueryRef": "Clientes Activos",
-              "displayName": "Clientes activos"
-            }
-          ]
-        },
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Tiempo"
-                    }
-                  },
-                  "Property": "Anio Mes Corto"
-                }
-              },
-              "queryRef": "Tiempo.Anio Mes Corto",
-              "nativeQueryRef": "Anio Mes Corto",
-              "displayName": "Mes"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Clientes Nuevos"
-                }
-              },
-              "queryRef": "Medidas.Clientes Nuevos",
-              "nativeQueryRef": "Clientes Nuevos",
-              "displayName": "Clientes nuevos"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Tiempo"
-                  }
-                },
-                "Property": "Anio Mes Corto"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
-        "isDefaultSort": true
-      }
-    }
+    "drillFilterOtherVisuals": true
   }
 }

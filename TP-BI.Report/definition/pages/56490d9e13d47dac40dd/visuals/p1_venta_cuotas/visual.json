@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p1_venta_cuotas",
   "position": {
     "x": 1192,
@@ -10,40 +10,101 @@
     "tabOrder": 402
   },
   "visual": {
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "factVentas"
+                    }
+                  },
+                  "Property": "Cuotas"
                 }
+              },
+              "queryRef": "factVentas.Cuotas",
+              "nativeQueryRef": "Cuotas",
+              "active": true,
+              "displayName": "Cuotas"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Comprobantes"
+                }
+              },
+              "queryRef": "Medidas.Comprobantes",
+              "nativeQueryRef": "Comprobantes",
+              "displayName": "Comprobantes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Ticket Promedio"
+                }
+              },
+              "queryRef": "Medidas.Ticket Promedio",
+              "nativeQueryRef": "Ticket Promedio",
+              "displayName": "Ticket promedio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta",
+              "nativeQueryRef": "Venta Neta",
+              "displayName": "Venta neta"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "factVentas"
+                  }
+                },
+                "Property": "Cuotas"
               }
             },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Venta neta por cantidad de cuotas'"
-                }
-              }
-            }
+            "direction": "Ascending"
           }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "objects": {
       "categoryAxis": [
@@ -124,101 +185,41 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "visualType": "clusteredColumnChart",
-    "query": {
-      "queryState": {
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Comprobantes"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
-              },
-              "queryRef": "Medidas.Comprobantes",
-              "nativeQueryRef": "Comprobantes",
-              "displayName": "Comprobantes"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Ticket Promedio"
-                }
-              },
-              "queryRef": "Medidas.Ticket Promedio",
-              "nativeQueryRef": "Ticket Promedio",
-              "displayName": "Ticket promedio"
-            }
-          ]
-        },
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "factVentas"
-                    }
-                  },
-                  "Property": "Cuotas"
-                }
-              },
-              "queryRef": "factVentas.Cuotas",
-              "nativeQueryRef": "Cuotas",
-              "displayName": "Cuotas"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Venta Neta"
-                }
-              },
-              "queryRef": "Medidas.Venta Neta",
-              "nativeQueryRef": "Venta Neta",
-              "displayName": "Venta neta"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "factVentas"
-                  }
-                },
-                "Property": "Cuotas"
               }
             },
-            "direction": "Ascending"
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Venta neta por cantidad de cuotas'"
+                }
+              }
+            }
           }
-        ],
-        "isDefaultSort": true
-      }
-    }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

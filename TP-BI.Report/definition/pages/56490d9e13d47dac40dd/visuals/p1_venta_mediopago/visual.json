@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p1_venta_mediopago",
   "position": {
     "x": 836,
@@ -10,40 +10,101 @@
     "tabOrder": 401
   },
   "visual": {
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MedioPago"
+                    }
+                  },
+                  "Property": "Medio_Pago"
                 }
+              },
+              "queryRef": "MedioPago.Medio_Pago",
+              "nativeQueryRef": "Medio_Pago",
+              "active": true,
+              "displayName": "Medio de pago"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Comprobantes"
+                }
+              },
+              "queryRef": "Medidas.Comprobantes",
+              "nativeQueryRef": "Comprobantes",
+              "displayName": "Comprobantes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Ticket Promedio"
+                }
+              },
+              "queryRef": "Medidas.Ticket Promedio",
+              "nativeQueryRef": "Ticket Promedio",
+              "displayName": "Ticket promedio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Venta Neta"
+                }
+              },
+              "queryRef": "Medidas.Venta Neta",
+              "nativeQueryRef": "Venta Neta",
+              "displayName": "Venta neta"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Venta Neta"
               }
             },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Venta neta por medio de pago'"
-                }
-              }
-            }
+            "direction": "Descending"
           }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "objects": {
       "labels": [
@@ -87,101 +148,41 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "visualType": "clusteredBarChart",
-    "query": {
-      "queryState": {
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Comprobantes"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
-              },
-              "queryRef": "Medidas.Comprobantes",
-              "nativeQueryRef": "Comprobantes",
-              "displayName": "Comprobantes"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Ticket Promedio"
-                }
-              },
-              "queryRef": "Medidas.Ticket Promedio",
-              "nativeQueryRef": "Ticket Promedio",
-              "displayName": "Ticket promedio"
-            }
-          ]
-        },
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "MedioPago"
-                    }
-                  },
-                  "Property": "Medio_Pago"
-                }
-              },
-              "queryRef": "MedioPago.Medio_Pago",
-              "nativeQueryRef": "Medio_Pago",
-              "displayName": "Medio de pago"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Venta Neta"
-                }
-              },
-              "queryRef": "Medidas.Venta Neta",
-              "nativeQueryRef": "Venta Neta",
-              "displayName": "Venta neta"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Medidas"
-                  }
-                },
-                "Property": "Venta Neta"
               }
             },
-            "direction": "Descending"
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Venta neta por medio de pago'"
+                }
+              }
+            }
           }
-        ],
-        "isDefaultSort": true
-      }
-    }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p1_sl_tiempo",
   "position": {
     "x": 16,
@@ -10,6 +10,55 @@
     "tabOrder": 100
   },
   "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Ejercicio"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Ejercicio",
+              "nativeQueryRef": "Jerarquía Fiscal Ejercicio",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tiempo"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía Fiscal"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "Tiempo.Jerarquía Fiscal.Mes",
+              "nativeQueryRef": "Jerarquía Fiscal Mes",
+              "active": false
+            }
+          ]
+        }
+      }
+    },
     "objects": {
       "data": [
         {
@@ -38,7 +87,6 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
@@ -74,57 +122,11 @@
         }
       ]
     },
-    "visualType": "slicer",
-    "query": {
-      "queryState": {
-        "Values": {
-          "projections": [
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Tiempo"
-                        }
-                      },
-                      "Hierarchy": "Jerarquía Fiscal"
-                    }
-                  },
-                  "Level": "Ejercicio"
-                }
-              },
-              "queryRef": "Tiempo.Jerarquía Fiscal.Ejercicio",
-              "nativeQueryRef": "Jerarquía Fiscal Ejercicio"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Tiempo"
-                        }
-                      },
-                      "Hierarchy": "Jerarquía Fiscal"
-                    }
-                  },
-                  "Level": "Mes"
-                }
-              },
-              "queryRef": "Tiempo.Jerarquía Fiscal.Mes",
-              "nativeQueryRef": "Jerarquía Fiscal Mes"
-            }
-          ]
-        }
-      }
-    },
     "syncGroup": {
       "groupName": "Tiempo",
       "fieldChanges": true,
       "filterChanges": true
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }
