@@ -30,6 +30,45 @@
             }
           }
         }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "objects": {
@@ -42,7 +81,7 @@
             "shapeType": {
               "expr": {
                 "Literal": {
-                  "Value": "'back'"
+                  "Value": "'blank'"
                 }
               }
             },
@@ -76,7 +115,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Volver'"
+                  "Value": "'← Volver'"
                 }
               }
             },

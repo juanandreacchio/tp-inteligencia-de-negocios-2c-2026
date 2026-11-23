@@ -24,7 +24,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Venta neta mensual'"
+                  "Value": "'Venta neta mensual por ejercicio'"
                 }
               }
             }
@@ -84,12 +84,58 @@
             }
           }
         }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true,
     "visualType": "lineChart",
     "query": {
       "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Mes Corto"
+                }
+              },
+              "queryRef": "Tiempo.Mes Corto",
+              "nativeQueryRef": "Mes Corto",
+              "displayName": "Mes"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -109,7 +155,7 @@
             }
           ]
         },
-        "Category": {
+        "Series": {
           "projections": [
             {
               "field": {
@@ -119,12 +165,12 @@
                       "Entity": "Tiempo"
                     }
                   },
-                  "Property": "Anio Mes Corto"
+                  "Property": "Ejercicio Desc"
                 }
               },
-              "queryRef": "Tiempo.Anio Mes Corto",
-              "nativeQueryRef": "Anio Mes Corto",
-              "displayName": "Mes"
+              "queryRef": "Tiempo.Ejercicio Desc",
+              "nativeQueryRef": "Ejercicio Desc",
+              "displayName": "Ejercicio"
             }
           ]
         }
@@ -139,7 +185,7 @@
                     "Entity": "Tiempo"
                   }
                 },
-                "Property": "Anio Mes Corto"
+                "Property": "Mes Corto"
               }
             },
             "direction": "Ascending"
