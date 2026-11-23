@@ -23,9 +23,7 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Ranking de % de cumplimiento'"
-                }
+                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Cumplimiento Vendedores" }
               }
             }
           }
@@ -286,7 +284,7 @@
                 "Property": "% Cumplimiento"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true

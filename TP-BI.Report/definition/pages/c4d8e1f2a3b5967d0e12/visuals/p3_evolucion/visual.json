@@ -23,9 +23,7 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Venta neta vs objetivo por mes'"
-                }
+                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Detalle Vendedor" }
               }
             }
           }
@@ -44,7 +42,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Meses de julio a junio, agrupados por ejercicio'"
+                  "Value": "'Venta neta vs objetivo por mes · Meses de julio a junio, agrupados por ejercicio'"
                 }
               }
             }

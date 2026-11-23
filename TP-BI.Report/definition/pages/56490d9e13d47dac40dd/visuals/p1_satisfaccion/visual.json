@@ -10,7 +10,7 @@
     "tabOrder": 403
   },
   "visual": {
-    "visualType": "lineClusteredColumnComboChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -33,25 +33,6 @@
             }
           ]
         },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Pedidos Devueltos"
-                }
-              },
-              "queryRef": "Medidas.Pedidos Devueltos",
-              "nativeQueryRef": "Pedidos Devueltos",
-              "displayName": "Pedidos devueltos"
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
@@ -71,7 +52,7 @@
             }
           ]
         },
-        "Y2": {
+        "Tooltips": {
           "projections": [
             {
               "field": {
@@ -87,6 +68,21 @@
               "queryRef": "Medidas.Rating Promedio",
               "nativeQueryRef": "Rating Promedio",
               "displayName": "Rating promedio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Pedidos Devueltos"
+                }
+              },
+              "queryRef": "Medidas.Pedidos Devueltos",
+              "nativeQueryRef": "Pedidos Devueltos",
+              "displayName": "Pedidos devueltos"
             }
           ]
         }
@@ -111,7 +107,7 @@
       }
     },
     "objects": {
-      "legend": [
+      "labels": [
         {
           "properties": {
             "show": {
@@ -120,34 +116,20 @@
                   "Value": "true"
                 }
               }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
-                }
-              }
             }
           }
         }
       ],
-      "dataPoint": [
+      "valueAxis": [
         {
           "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#D9534F'"
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Medidas.Tasa de Devolución"
           }
         }
       ]
@@ -165,8 +147,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Satisfacción y devoluciones por subcategoría'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Título Devoluciones"
                 }
               }
             }
@@ -179,7 +166,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Por subcategoría · Rating en el tooltip'"
                 }
               }
             }

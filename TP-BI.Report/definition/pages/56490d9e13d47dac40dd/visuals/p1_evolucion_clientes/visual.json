@@ -5,12 +5,12 @@
     "x": 292,
     "y": 642,
     "z": 400,
-    "height": 422,
+    "height": 203,
     "width": 528,
     "tabOrder": 400
   },
   "visual": {
-    "visualType": "lineClusteredColumnComboChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -34,25 +34,6 @@
           ]
         },
         "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Clientes Nuevos"
-                }
-              },
-              "queryRef": "Medidas.Clientes Nuevos",
-              "nativeQueryRef": "Clientes Nuevos",
-              "displayName": "Clientes nuevos"
-            }
-          ]
-        },
-        "Y2": {
           "projections": [
             {
               "field": {
@@ -98,14 +79,33 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
-            },
-            "position": {
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
               "expr": {
                 "Literal": {
-                  "Value": "'Top'"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -127,7 +127,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Evolución mensual de clientes activos y nuevos'"
+                  "Value": "'Clientes activos por mes'"
                 }
               }
             }

@@ -11,7 +11,7 @@ Las cifras corresponden a los ejercicios fiscales 2024/25 y 2025/26 (julio a jun
 | Venta neta (dos ejercicios) | $ 3.455 M |
 | Objetivo de venta | $ 3.424 M |
 | Cumplimiento del objetivo | 100,9 % |
-| Crecimiento 2025/26 vs 2024/25 (nominal) | 33,9 % |
+| Crecimiento 2025/26 vs 2024/25 (nominal) | 34,0 % |
 | Margen bruto | 51,9 % |
 | Clientes activos | 1.736 |
 | Clientes nuevos | 690 |
@@ -33,7 +33,7 @@ Ese resultado total esconde un patrón que se repite mes a mes: en la primera mi
 
 #### 2. Crecimiento fuerte sin perder rentabilidad
 
-El ejercicio 2025/26 vendió un 33,9 % más que el 2024/25: $ 1.978 M contra $ 1.477 M. El margen bruto se mantuvo estable (51,9 % en 2024/25 y 51,8 % en 2025/26), de modo que el crecimiento no se apoyó en descuentos que erosionen la rentabilidad.
+El ejercicio 2025/26 vendió un 34,0 % más que el 2024/25: $ 1.978 M contra $ 1.477 M. El margen bruto se mantuvo estable (51,9 % en 2024/25 y 51,8 % en 2025/26), de modo que el crecimiento no se apoyó en descuentos que erosionen la rentabilidad.
 
 Dos aclaraciones para leer bien ese crecimiento:
 
@@ -113,9 +113,9 @@ El rating promedio es de 4,05 sobre 5 y la tasa de devolución, del 4,7 %. Las c
 | Lucía Ponce (Centro) | $ 584 M | 99,6 % | 101,7 % | 98,2 % |
 | Santiago Ruiz (Interior) | $ 438 M | 102,1 % | 101,5 % | 102,4 % |
 
-En el total de los dos ejercicios, tres de los cuatro equipos superan el objetivo y el de Lucía Ponce queda apenas por debajo. Pero mirando cada ejercicio por separado, ese equipo fue el de mejor cumplimiento en 2024/25 y cayó al 98,2 % en 2025/26: la brecha es reciente. En el ranking individual se destaca Germán Pereyra, con 113,6 % de cumplimiento (115,6 % en 2025/26).
+En el total de los dos ejercicios, tres de los cuatro equipos superan el objetivo y el de Lucía Ponce queda apenas por debajo. Pero mirando cada ejercicio por separado, ese equipo fue el de mejor cumplimiento en 2024/25 y cayó al 98,2 % en 2025/26: la brecha es reciente. En el ranking individual se destaca Germán Pereyra, con 113,6 % de cumplimiento (115,6 % en 2025/26). En el otro extremo, el cumplimiento total del 100,9 % esconde que 18 de los 37 vendedores con objetivo no lo alcanzan; dos de ellos, Andrea Ferrari (87,7 %) y Natalia Belén Moyano (89,1 %), quedan por debajo del 90 %.
 
-**Recomendación:** analizar con la página de detalle a los vendedores que explican la caída del equipo de Lucía Ponce en 2025/26, y replicar las prácticas de los vendedores con mayor cumplimiento.
+**Recomendación:** analizar con la página de detalle a los vendedores que explican la caída del equipo de Lucía Ponce en 2025/26 y a los que quedan por debajo del 90 %, y replicar las prácticas de los vendedores con mayor cumplimiento.
 
 #### 10. La experiencia pesa más en el volumen que en el cumplimiento
 
@@ -160,11 +160,11 @@ Paseo Aldrey (abierta el 03/11/2025) y Alto Comahue (abierta el 03/03/2025) tien
 
 ### Medidas DAX
 
-- Solo medidas explícitas, reunidas en la tabla exclusiva `Medidas` y organizadas en carpetas: Ventas, Clientes, Objetivos, Comparativos y Auxiliares.
+- Solo medidas explícitas, reunidas en la tabla exclusiva `Medidas` y organizadas en carpetas: Ventas, Clientes, Objetivos, Comparativos, Auxiliares y Títulos.
 - Formatos: pesos sin decimales y porcentajes con un decimal.
 - Las medidas de venta, margen, unidades y comprobantes consideran solo pedidos con `Es_Venta_Efectiva = "Sí"`.
 - Los acumulados del ejercicio usan `TOTALYTD` con cierre al 30 de junio.
-- La variación contra el ejercicio anterior se calcula solo cuando hay un único ejercicio en contexto, para no comparar dos ejercicios sumados contra uno solo.
+- La variación contra el ejercicio anterior compara siempre un solo ejercicio contra el previo, para no comparar dos ejercicios sumados contra uno solo. Si hay varios ejercicios en contexto (por ejemplo, sin filtro de tiempo), toma el último: 2025/26 contra 2024/25. Para 2024/25 queda en blanco porque no hay datos del ejercicio anterior.
 - Los clientes nuevos se calculan con `TREATAS` sobre la fecha de alta, sin agregar una relación física adicional.
 - El ranking de cumplimiento usa `RANKX` y considera solo a los vendedores con objetivo asignado.
 
@@ -187,3 +187,7 @@ Paseo Aldrey (abierta el 03/11/2025) y Alto Comahue (abierta el 03/03/2025) tien
 - Los segmentadores de Tiempo, Segmento de cliente, Categoría y Zona comercial están sincronizados entre todas las páginas.
 - La navegación se hace con botones en el encabezado.
 - El cumplimiento usa un semáforo común en todo el informe: rojo por debajo del 90 %, amarillo entre 90 % y 100 % y verde desde el 100 %.
+- Los gráficos principales tienen títulos dinámicos, calculados con medidas, que enuncian la conclusión y se actualizan con los filtros (por ejemplo, "18 de 37 vendedores no alcanzan el objetivo"). La descripción del gráfico queda en el subtítulo.
+- Se evitó el doble eje: la evolución de clientes activos y nuevos se muestra en dos gráficos alineados, porque sus escalas son muy distintas y en un mismo gráfico distorsionaban la lectura. Con el mismo criterio, la tasa de devolución por subcategoría se muestra en barras y el rating queda en el tooltip y en su tarjeta.
+- El ranking de cumplimiento se ordena de menor a mayor, para mostrar primero a los vendedores que no alcanzan el objetivo.
+- El naranja se reserva para el objetivo y la página activa; el resto de los gráficos usa el azul del tema.

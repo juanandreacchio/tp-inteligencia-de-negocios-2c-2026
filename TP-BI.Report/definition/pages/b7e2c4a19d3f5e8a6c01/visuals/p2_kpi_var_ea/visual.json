@@ -90,7 +90,7 @@
               },
               "queryRef": "Medidas.Var. vs Ejercicio Anterior",
               "nativeQueryRef": "Var. vs Ejercicio Anterior",
-              "displayName": "Var. vs ej. anterior (elegí un ejercicio)"
+              "displayName": "Var. último ejercicio vs anterior"
             }
           ]
         }

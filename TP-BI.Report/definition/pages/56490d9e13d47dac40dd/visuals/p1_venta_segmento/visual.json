@@ -176,9 +176,7 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Venta neta por segmento'"
-                }
+                "Measure": { "Expression": { "SourceRef": { "Entity": "Medidas" } }, "Property": "Título Venta por Segmento" }
               }
             }
           }
@@ -197,7 +195,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Ver % de participación en el tooltip'"
+                  "Value": "'Venta neta por segmento · % en el tooltip'"
                 }
               }
             }
